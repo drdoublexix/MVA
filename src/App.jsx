@@ -128,16 +128,14 @@ function App() {
 
       {/*CTA section*/}
 
-      <section className="cta mx-4 my-4 overflow-hidden rounded-[28px] border border-neutral-800 shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
+      <section className="cta mx-4 my-6 rounded-[28px] border border-neutral-800 shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
         <div className="cta-overlay">
-          <button className="cta-button">
-            <Link
-              to="/aboutUs"
-              className="text-black bolder hover:text-shadow-sm text-shadow-white transition-all duration-200"
-            >
-              Discover our story
-            </Link>
-          </button>
+          <Link
+            to="/aboutUs"
+            className="cta-button text-black bolder transition-all duration-200"
+          >
+            Discover our story
+          </Link>
         </div>
       </section>
 
