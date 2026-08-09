@@ -54,7 +54,7 @@ const Sponsors = () => {
           <div className="grid place-items-center h-full px-6 text-center">
             <div className="max-w-3xl">
               <h1 className="text-xl bolder md:text-3xl">
-                Why partner with Merit and value awards
+                Why partner with Merit and Value Awards
               </h1>
               <p className="light2 text-[#D1D5DB] mt-4 text-lg md:text-xl">
                 Align your brand with a celebration of excellence, inclusion, and
