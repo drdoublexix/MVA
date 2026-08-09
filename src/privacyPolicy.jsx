@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
                         >
                             <img src={ig} alt="Instagram" className="h-[30px] md:h-[30px]" />
                         </a>
-                        <a href="https://www.facebook.com/share/1D8MB5LWgH/?mibextid=wwXIfr"
+                        <a href="https://www.facebook.com/meritandvalueawards"
                             target="_blank"
                         >
                             <img src={fb} alt="Facebook" className="h-[30px] md:h-[30px]" />

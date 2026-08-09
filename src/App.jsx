@@ -36,7 +36,8 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}>
-      <div className="flex">
+      <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.16),_transparent_42%)] bg-neutral-950 text-neutral-100">
+        <div className="flex">
         {/* Nav menu */}
         <aside
           className={`heading fixed md:static ${slide ? "slide-in" : "slide-out"}`}
@@ -107,7 +108,7 @@ function App() {
       </div>
 
       {/* Intro section */}
-      <section className="intro-section">
+      <section className="px-6 py-16 md:px-8 lg:px-12">
         <h1 className="section-title">Who we are</h1>
         <div className="intro-panel">
           <p className="section-copy">
@@ -127,12 +128,12 @@ function App() {
 
       {/*CTA section*/}
 
-      <section className="cta">
+      <section className="cta mx-4 my-4 overflow-hidden rounded-[28px] border border-neutral-800 shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
         <div className="cta-overlay">
           <button className="cta-button">
             <Link
               to="/aboutUs"
-              className="hover:text-shadow-sm text-shadow-white transition-all duration-200"
+              className="text-black bolder hover:text-shadow-sm text-shadow-white transition-all duration-200"
             >
               Discover our story
             </Link>
@@ -142,12 +143,12 @@ function App() {
 
       {/* Highlights */}
 
-      <section className="p-[40px] bg-[#F9FAFB]">
+      <section className="px-6 py-16 md:px-8 lg:px-12">
         <h1 className="section-title">HIGHLIGHTS AND QUICK STATS</h1>
         <div className="card-divs">
           <Link to="/awards">
-            <div className="card bg-[#FEF3C7]">
-              <div className="card-img bg-[#D4A373]">
+            <div className="card border border-amber-500/20 bg-neutral-900/90">
+              <div className="card-img bg-amber-500/15">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -161,14 +162,14 @@ function App() {
                   />
                 </svg>
               </div>
-              <div className="bolder mt-4 w-full text-center text-[20px]">
+              <div className="bolder mt-4 w-full text-center text-[20px] text-white">
                 Award categories
               </div>
             </div>
           </Link>
           <Link to="/nominate">
-            <div className="card bg-slate-100">
-              <div className="card-img bg-[#DBEAFE]">
+            <div className="card border border-sky-500/20 bg-neutral-900/90">
+              <div className="card-img bg-sky-500/15">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -179,7 +180,7 @@ function App() {
                   <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
                 </svg>
               </div>
-              <div className="bolder mt-4 w-full text-center text-[20px]">
+              <div className="bolder mt-4 w-full text-center text-[20px] text-white">
                 Talented nominees
               </div>
             </div>
@@ -191,8 +192,8 @@ function App() {
             rel="noopener noreferrer"
             className=""
           >
-            <div className="card bg-purple-50">
-              <div className="card-img bg-[#F3E8FF]">
+            <div className="card border border-violet-500/20 bg-neutral-900/90">
+              <div className="card-img bg-violet-500/15">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -208,7 +209,7 @@ function App() {
                   />
                 </svg>
               </div>
-              <div className="bolder mt-4 w-full text-center text-[20px]">
+              <div className="bolder mt-4 w-full text-center text-[20px] text-white">
                 Maiduguri
               </div>
             </div>
@@ -216,17 +217,17 @@ function App() {
         </div>
       </section>
 
-      <section className="p-[40px]  bg-[#F5F5F5]">
-        <h1 className="bolder2 text-center text-2xl mt-3">
+      <section className="px-6 py-16 md:px-8 lg:px-12">
+        <h1 className="bolder2 mt-3 text-center text-2xl text-white">
           Our Flagship Events
         </h1>
 
         <div className="mt-[40px] grid grid-cols-1 justify-center items-center gap-10 md:grid-cols-2">
-          <div className="general-card bg-[#F7E7CE]">
-            <h1 className="bolder2 text-xl text-center mt-2 md:text-2xl">
+          <div className="general-card border border-amber-500/20 bg-neutral-900/85">
+            <h1 className="bolder2 mt-2 text-center text-xl md:text-2xl text-white">
               Annual award ceremony
             </h1>
-            <p className="text-[#334155] lighter2 text-center text-[14px] mt-[5px] md:text-xl mt-[40px]">
+            <p className="mt-[40px] text-center text-[14px] text-neutral-300 md:text-xl">
               <b> Merit and Value Awards Ceremony 2026 Theme:</b> <br />
               Celebrating Excellence and Inclusion A glamorous night celebrating
               the best in music, film, fashion, entrepreneurship, humanitarian
@@ -235,18 +236,18 @@ function App() {
             <div className="flex justify-center mt-5">
               <Link
                 to="/awards"
-                className="p-2 bolder2 bg-[#DFD7C7] rounded-[10px] text-[#334155] cursor-pointer"
+                className="p-2 bolder2 rounded-[10px] bg-amber-500/90 text-black cursor-pointer"
               >
                 View Awards
               </Link>
             </div>
           </div>
 
-          <div className="general-card bg-[#E6E6FA] ">
-            <h1 className="bolder2 text-xl text-center mt-1 md:text-2xl">
+          <div className="general-card border border-sky-500/20 bg-neutral-900/85">
+            <h1 className="bolder2 mt-1 text-center text-xl md:text-2xl text-white">
               Rise to fame talent hunt 2027
             </h1>
-            <p className=" text-[#334155] lighter2 text-center text-[14px] mt-[5px] md:text-xl mt-[40px]">
+            <p className="mt-[40px] text-center text-[14px] text-neutral-300 md:text-xl">
               <b> Rise to Fame” Talent Hunt 2027 Theme:</b> <br />
               Gateway to Merit and Value Awards A groundbreaking talent hunt
               designed to discover, nurture, and celebrate exceptional talents —
@@ -256,7 +257,7 @@ function App() {
             <div className="flex justify-center mt-5">
               <Link
                 to="/aboutUs"
-                className="p-2 bolder2 bg-[#C3CBE0] rounded-[10px] text-[#334155] cursor-pointer"
+                className="p-2 bolder2 rounded-[10px] bg-sky-500/90 text-black cursor-pointer"
               >
                 Learn More
               </Link>
@@ -265,13 +266,13 @@ function App() {
         </div>
       </section>
       {/* About inclusion */}
-      <section className="bg-black text-white text-center p-5">
-        <h1 className="bolder text-3xl mt-4">About inclusion</h1>
+      <section className="mx-4 my-6 rounded-[28px] border border-neutral-800 bg-gradient-to-br from-amber-500/12 to-neutral-900 p-8 text-center text-white shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
+        <h1 className="bolder mt-4 text-3xl">About inclusion</h1>
         <br />
-        <h2 className="light text-xl mb-4">
+        <h2 className="light mb-4 text-xl">
           We Don’t Just Celebrate Talent. We Break Barriers.
         </h2>
-        <p className="light text-center p-5">
+        <p className="light p-5 text-center text-neutral-300">
           Merit and Value Awards is built on a foundation of equality. We create
           platforms where every voice is heard, every talent is seen, and every
           individual — regardless of ability —has an equal chance to shine.
@@ -293,15 +294,15 @@ function App() {
       </section> */}
 
       {/* Sponsors */}
-      <section className="h-[390px] bg-black/50 text-white flex justify-center md:flex flex-col">
-        <h1 className="bolder text-3xl mt-2 text-center">Our partners </h1>
+      <section className="mx-4 my-6 flex flex-col justify-center rounded-[28px] border border-neutral-800 bg-neutral-900/90 p-8 text-white shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
+        <h1 className="bolder mt-2 text-center text-3xl">Our partners </h1>
 
-        <div className="border-2 p-2 inline-flex justify-center ">
+        <div className="mt-6 inline-flex justify-center rounded-[20px] border border-neutral-800 bg-neutral-950/70 p-4">
           <img src={mvs} alt="MVS Logo" className="h-[150px] w-auto" />
         </div>
         <Link
           to="/sponsors"
-          className=" button-theme text-center block mx-auto"
+          className="button-theme mx-auto mt-6 block text-center"
         >
           Become a sponsor
         </Link>
@@ -332,8 +333,8 @@ function App() {
         </div>
       </section> */}
       {/* Footer */}
-      <footer className="bg-black text-white text-center p-5">
-        <div className="p-[40px]  grid gap-[30px] justify-center items-center md:flex">
+      <footer className="border-t border-neutral-800 bg-black/70 p-5 text-center text-neutral-300">
+        <div className="grid justify-center items-center gap-[30px] p-[40px] md:flex">
           <div className="w-[430px] flex flex-col gap-[30px] text-center items-center">
             <img src={logo} alt="Logo" className="h-[30px]" />
             <span>Celebratng excellence and inspiring change</span>
@@ -361,7 +362,7 @@ function App() {
                 />
               </a>
               <a
-                href="https://www.facebook.com/share/1D8MB5LWgH/?mibextid=wwXIfr"
+                href="https://www.facebook.com/meritandvalueawards"
                 target="_blank"
               >
                 <img src={fb} alt="Facebook" className="h-[30px] md:h-[30px]" />
@@ -396,7 +397,8 @@ function App() {
           </div>
         </div>
         <span>&copy; 2026 Merit and value awards</span>
-     </footer>
+      </footer>
+      </div>
     </GoogleReCaptchaProvider>
   );
 }

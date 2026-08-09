@@ -311,7 +311,7 @@ const Stardom = () => {
                   <a href="https://www.instagram.com/meritandvalueawards?igsh=MXA4NmpwczN0M2c3dA==" target="_blank">
                     <img src={ig} alt="Instagram" className="h-[30px] md:h-[30px]" />
                   </a>
-                  <a href="https://www.facebook.com/share/1D8MB5LWgH/?mibextid=wwXIfr" target="_blank">
+                  <a href="https://www.facebook.com/meritandvalueawards" target="_blank">
                     <img src={fb} alt="Facebook" className="h-[30px] md:h-[30px]" />
                   </a>
                   <a href="https://x.com/mvaevent" target="_blank">
