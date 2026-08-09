@@ -132,7 +132,7 @@ const AboutUs = () => {
       </section>
       {/* Core values */}
       <section className="p-[30px] light2 bg-orange-100">
-        <h1 className="text-3xl bolder2 text-center ">Core Values</h1>
+        <h1 className="text-3xl bolder2 text-[#1F2937] text-center ">Core Values</h1>
         {/* Card Container */}
         <div className="grid mt-[40px] justify-center items-center md:flex justify-around gap-10">
           {/* Cards */}
@@ -232,7 +232,7 @@ const AboutUs = () => {
 
       <section className="p-4 sm:p-6 lg:p-8 bg-gray-100">
         <header className="max-w-5xl mx-auto">
-          <h1 className="bolder2 text-2xl md:text-3xl text-center mt-[30px]">
+          <h1 className="bolder2 text-2xl md:text-3xl text-[#1F2937] text-center mt-[30px]">
             Meet the team
           </h1>
           <p className="light2 text-lg md:text-xl text-center mt-4 leading-8 text-gray-700">

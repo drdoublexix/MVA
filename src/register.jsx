@@ -114,7 +114,7 @@ const Register = () => {
               <h2 className="bolder2 text-2xl text-[#334155] md:text-3xl">
                 Nominee Registration Form
               </h2>
-              <p className="light2 mt-2 text-base text-slate-600 md:text-lg">
+              <p className="light2 mt-2 text-base text-slate-800 md:text-lg">
                 Fill in your details and we will connect you directly to the
                 nomination team on WhatsApp.
               </p>

@@ -66,7 +66,7 @@ const Sponsors = () => {
         </section>
       </div>
 
-      <section className="light2 p-3 text-[#334155] text-center mt-3 md:mt-5">
+      <section className="light2 p-3 text-slate-300 text-center mt-3 md:mt-5">
         <p className="text-2xl">
           Merit and Value Awards is more than an event — it is a movement. By
           partnering with us, your brand stands alongside a platform that
@@ -104,38 +104,38 @@ const Sponsors = () => {
       </section>
 
       <section className="p-[30px]">
-        <h1 className="text-2xl text-center text-slate-500 bolder2 md:text-3xl">
+        <h1 className="text-2xl text-center text-slate-400 bolder2 md:text-3xl">
           Sponsorship tiers
         </h1>
 
         <div className="mt-[30px] grid gap-6 md:grid-cols-2">
           <div className="rounded-[20px] border border-slate-200 p-6 shadow-sm">
-            <h2 className="bolder text-2xl text-slate-700 text-center">Platinum Sponsor</h2>
-            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-[#334155]">
+            <h2 className="bolder text-2xl text-slate-400 text-center">Platinum Sponsor</h2>
+            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-slate-300">
               All benefits + headline naming rights, VIP seating, fullContact media integration
             </p>
 
           </div>
 
           <div className="rounded-[20px] border border-slate-200 p-6 shadow-sm">
-            <h2 className="bolder text-2xl text-slate-700 text-center">Gold Sponsor</h2>
-            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-[#334155]">
+            <h2 className="bolder text-2xl text-slate-400 text-center">Gold Sponsor</h2>
+            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-slate-300">
               Logo on all materials, stage mention, social media feature, Contact VIP tickets
             </p>
 
           </div>
 
           <div className="rounded-[20px] border border-slate-200 p-6 shadow-sm">
-            <h2 className="bolder text-2xl text-slate-700 text-center">Silver Sponsor</h2>
-            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-[#334155]">
+            <h2 className="bolder text-2xl text-slate-400 text-center">Silver Sponsor</h2>
+            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-slate-300">
               Logo on select materials, social media mention, standard Contact tickets
             </p>
 
           </div>
 
           <div className="rounded-[20px] border border-slate-200 p-6 shadow-sm">
-            <h2 className="bolder text-2xl text-slate-700 text-center">Community Supporter</h2>
-            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-[#334155]">
+            <h2 className="bolder text-2xl text-slate-400 text-center">Community Supporter</h2>
+            <p className="mt-4 text-[10px] text-center light md:text-[20px] text-slate-300">
               Brand mention in programme, social media shoutout
             </p>
 

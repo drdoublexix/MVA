@@ -83,7 +83,7 @@ const Gallery = () => {
       </div>
 
       <section className=" text-center p-4">
-        <h1 className="text-xl text-slate-500 text-center mb-2 bolder2 md:text-4xl ">
+        <h1 className="text-xl text-slate-400 text-center mb-2 bolder2 md:text-4xl ">
           Merit and Value Awards 2025 — Highlights
         </h1>
         <div className="border-none p-3 border-slate-400 grid grid-cols-1 gap-4 md:grid-cols-3 border-2 border-dashed">
@@ -105,7 +105,7 @@ const Gallery = () => {
         </div>
 
         <div className="">
-          <h1 className="text-xl text-slate-500 text-center mb-2 bolder2 md:text-4xl ">
+          <h1 className="text-xl text-slate-400 text-center mb-2 bolder2 md:text-4xl ">
             Videos
           </h1>
 

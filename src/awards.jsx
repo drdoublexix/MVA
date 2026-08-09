@@ -76,7 +76,7 @@ const Awards = () => {
 
       <section className="text-center p-2">
         <h1 className="bolder2 text-2xl md:text-3xl mt-[20px]">Introduction</h1>
-        <p className="light2 text-3xl text-slate-600">
+        <p className="light2 text-3xl text-slate-300">
           The Merit and Value Awards Ceremony honours outstanding achievement
           across a wide range of categories. From music and film to
           entrepreneurship and humanitarian service, we celebrate the
@@ -175,7 +175,7 @@ const Awards = () => {
           <h1 className="bolder2 text-2xl md:text-3xl text-center mt-[30px]">
             Past Winners
           </h1>
-          <p className="light2 text-lg md:text-xl text-center mt-4 leading-8 text-gray-700">
+          <p className="light2 text-lg md:text-xl text-center mt-4 leading-8 text-slate-300">
             Every name on this page represents a story of dedication,
             creativity, and impact. These are but a few of the individuals and
             organisations that our community recognised, celebrated, and crowned

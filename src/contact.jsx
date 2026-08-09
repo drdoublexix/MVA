@@ -65,7 +65,7 @@ const ContactUs = () => {
         </section>
       </div>
       <section className="p-4 text-center">
-        <h1 className="text-slate-500 bolder2 text-2xl mb-[40px] md:text-4xl">
+        <h1 className="text-slate-400 bolder2 text-2xl mb-[40px] md:text-4xl">
           Contact information
         </h1>
         <div className="card-divs">
@@ -122,7 +122,7 @@ const ContactUs = () => {
       </section>
 
       <section className="p-4 text-center">
-        <h1 className="text-slate-500 bolder2 text-2xl mb-[40px] md:text-4xl">
+        <h1 className="text-slate-400 bolder2 text-2xl mb-[40px] md:text-4xl">
           Social media links
         </h1>
 
