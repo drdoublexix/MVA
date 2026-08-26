@@ -264,7 +264,7 @@ const AboutUs = () => {
                 Jane leads the overall strategic direction, programming, fundraising, and
                 partnerships of Merit and Value Awards, ensuring the platform
                 remains a credible, inclusive, and community-driven force for
-                recognising excellence in Maiduguri and beyon.
+                recognising excellence in Maiduguri and beyond.
               </p>
             </div>
           </article>
