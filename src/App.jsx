@@ -70,7 +70,7 @@ function App() {
           <div className="hero-content">
             <div className="hero-ribbon">MVA Awards & Events + MVA Rise</div>
             <h1 className="hero-heading">
-              Celebrating Excellence. Building and Defining the Future.
+              Celebrating Excellence. Defining the Future.
             </h1>
             <p className="hero-subtext">
               We don't just recognize greatness—we build it. Merit and Value
