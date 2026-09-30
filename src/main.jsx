@@ -2,34 +2,28 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import AboutUs from "./aboutUs.jsx";
-import Awards from "./awards.jsx";
-import MvaRise from "./mvaRise.jsx";
-import Nominate from "./nominate.jsx";
-import PublicNomination from "./publicNomination.jsx";
-import Sponsors from "./sponsors.jsx";
-import Gallery from "./gallery.jsx";
-import ContactUs from "./contact.jsx";
-import PrivacyPolicy from "./privacyPolicy.jsx";
-import Register from "./register.jsx";
-import MvaRiseRegister from "./mvaRiseRegister.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { HelmetProvider } from "react-helmet-async";
 
+const loadComponent = (loadPage) => async () => {
+  const { default: Component } = await loadPage();
+  return { Component };
+};
+
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
-  { path: "/aboutUs", element: <AboutUs /> },
-  { path: "/awards", element: <Awards /> },
-  { path: "/riseToFame", element: <MvaRise /> },
-  { path: "/nominate", element: <Nominate /> },
-  { path: "/nominate/submit", element: <PublicNomination /> },
-  { path: "/sponsors", element: <Sponsors /> },
-  { path: "/gallery", element: <Gallery /> },
-  { path: "/contact", element: <ContactUs /> },
-  { path: "/register", element: <Register /> },
-  { path: "/mva-rise/register", element: <MvaRiseRegister /> },
-  { path: "/mva-rise", element: <MvaRise /> },
-  { path: "/privacyPolicy", element: <PrivacyPolicy /> },
+  { path: "/aboutUs", lazy: loadComponent(() => import("./aboutUs.jsx")) },
+  { path: "/awards", lazy: loadComponent(() => import("./awards.jsx")) },
+  { path: "/riseToFame", lazy: loadComponent(() => import("./mvaRise.jsx")) },
+  { path: "/nominate", lazy: loadComponent(() => import("./nominate.jsx")) },
+  { path: "/nominate/submit", lazy: loadComponent(() => import("./publicNomination.jsx")) },
+  { path: "/sponsors", lazy: loadComponent(() => import("./sponsors.jsx")) },
+  { path: "/gallery", lazy: loadComponent(() => import("./gallery.jsx")) },
+  { path: "/contact", lazy: loadComponent(() => import("./contact.jsx")) },
+  { path: "/register", lazy: loadComponent(() => import("./register.jsx")) },
+  { path: "/mva-rise/register", lazy: loadComponent(() => import("./mvaRiseRegister.jsx")) },
+  { path: "/mva-rise", lazy: loadComponent(() => import("./mvaRise.jsx")) },
+  { path: "/privacyPolicy", lazy: loadComponent(() => import("./privacyPolicy.jsx")) },
 ]);
 
 createRoot(document.getElementById("root")).render(

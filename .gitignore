@@ -20,7 +20,7 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-23 *.sln
-24 *.sw?
-25 .env
-26 .env.*
+*.sln
+*.sw?
+.env
+.env.*

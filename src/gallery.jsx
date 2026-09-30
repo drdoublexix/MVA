@@ -25,8 +25,9 @@ import img12 from "./assets/img12.JPG";
 import img13 from "./assets/img13.JPG";
 import img14 from "./assets/img14.JPG";
 import award1 from "./assets/award1.JPG";
-import vid1 from "./assets/vid1.MP4";
-import vid2 from "./assets/vid2.MP4";
+
+const vid1 = "/videos/vid1.MP4";
+const vid2 = "/videos/vid2.MP4";
 
 const Gallery = () => {
   const [slide, setSlide] = useState(false);
@@ -133,8 +134,8 @@ const Gallery = () => {
             <h2>Recognition is an experience.</h2>
           </div>
           <div className="gallery-video-grid">
-            <video src={vid2} controls aria-label="MVA event highlights" />
-            <video src={vid1} controls aria-label="MVA community highlights" />
+            <video src={vid2} controls preload="none" aria-label="MVA event highlights" />
+            <video src={vid1} controls preload="none" aria-label="MVA community highlights" />
           </div>
         </section>
       </main>
