@@ -1,340 +1,252 @@
-import React from "react";
 import { useState } from "react";
+import { Link } from "react-router";
 import { list } from "./App.jsx";
 import "./index.css";
 import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
-import { Link } from "react-router";
-import music from "./assets/icons8-music.png";
-import movie from "./assets/icons8-movie.png";
-import dress from "./assets/icons8-dress.png";
-import card2 from "./assets/icons8-lightbulb.png";
-import phone from "./assets/icons8-phone.png";
-import charity from "./assets/icons8-charity.png";
-import dance from "./assets/icons8-dancing.png";
 import logo from "./assets/logo.png";
 import fb from "./assets/icons8-fb.svg";
 import ig from "./assets/icons8-ig.svg";
 import x from "./assets/icons8-x-50.png";
 import youtube from "./assets/icons8-youtube.png";
 import tiktok from "./assets/icons8-tiktok-50.png";
-import award1 from "./assets/award1.JPG";
-import award2 from "./assets/award2.JPG";
-import award3 from "./assets/award3.JPG";
+import { officialAwardCategories } from "./officialAwardCategories.js";
+import { supabase } from "./supabaseClient.js";
+
+const MAX_RECEIPT_SIZE = 10 * 1024 * 1024;
+const ALLOWED_RECEIPT_TYPES = ["application/pdf", "image/jpeg", "image/png", "image/webp"];
 
 const Register = () => {
   const [slide, setSlide] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [paymentReceipt, setPaymentReceipt] = useState(null);
   const [formData, setFormData] = useState({
-    fullName: "",
+    nomineeName: "",
     email: "",
     phone: "",
     category: "",
-    talent: "",
     location: "",
-    motivation: "",
+    achievements: "",
+    paymentConfirmed: false,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErrorMessage("");
 
-    const message = [
-      "New nominee registration",
-      `Full name: ${formData.fullName}`,
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone}`,
-      `Category: ${formData.category}`,
-      `Talent: ${formData.talent}`,
-      `Location: ${formData.location}`,
-      `Motivation: ${formData.motivation}`,
-    ].join("\n");
+    if (!paymentReceipt) {
+      setErrorMessage("Please choose your ₦1,000 payment receipt to continue.");
+      return;
+    }
 
-    const whatsappUrl = `https://wa.me/2349071358268?text=${encodeURIComponent(message)}`;
+    if (!ALLOWED_RECEIPT_TYPES.includes(paymentReceipt.type)) {
+      setErrorMessage("Upload a PDF, JPG, PNG, or WebP receipt.");
+      return;
+    }
 
-    if (typeof window !== "undefined") {
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (paymentReceipt.size > MAX_RECEIPT_SIZE) {
+      setErrorMessage("Your receipt must be 10 MB or smaller.");
+      return;
+    }
+
+    setSubmitting(true);
+    const receiptPath = `${crypto.randomUUID()}-${paymentReceipt.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+
+    try {
+      const { error: uploadError } = await supabase.storage
+        .from("nominee-payment-receipts")
+        .upload(receiptPath, paymentReceipt, {
+          cacheControl: "3600",
+          contentType: paymentReceipt.type,
+          upsert: false,
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { error: insertError } = await supabase.from("nominee_registrations").insert({
+        nominee_name: formData.nomineeName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        category: formData.category,
+        location: formData.location.trim(),
+        achievements_summary: formData.achievements.trim(),
+        payment_receipt_path: receiptPath,
+        payment_confirmed: formData.paymentConfirmed,
+        registration_fee_ngn: 1000,
+      });
+
+      if (insertError) throw insertError;
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Nominee registration failed:", error);
+      setErrorMessage("We could not submit your registration. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  const toggleSlide = () => {
-    setSlide(!slide);
-  };
+  const toggleSlide = () => setSlide((current) => !current);
 
   return (
-    <>
-      <div className="flex">
-        {/* Aside section */}
-        <aside
-          className={`heading fixed md:static ${slide ? "slide-in" : "slide-out"}`}
-        >
-          <ul className="list">
-            <button className="menu " onClick={toggleSlide}>
-              <img src={back} alt="Back" />
-            </button>
-            {list.map((item, index) => (
-              <li key={index}>
-                <Link to={item.path} className="header-button">
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        <section className="w-full bg-black text-white p-3 h-[170px] md:text-3xl">
-          <button
-            className="fixed top-0 left-0 bg-[#999999] rounded-[50%] z-[20] md:cursor-pointer fixed h-[45px] w-[50px] "
-            onClick={toggleSlide}
-          >
-            <img src={menu} alt="Menu" className="ml-3" />
+    <div className="nominee-register-layout">
+      <aside className={`heading fixed ${slide ? "slide-in" : "slide-out"}`}>
+        <ul className="list">
+          <button className="menu" onClick={toggleSlide} aria-label="Close navigation">
+            <img src={back} alt="" />
           </button>
+          {list.map((item) => (
+            <li key={item.path}>
+              <Link to={item.path} className="header-button">{item.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </aside>
 
-
-          <img
-            src={logo}
-            alt="Logo"
-            className="absolute top-0 right-0 h-[35px] md:h-[55px] p-2 z-[50]"
-          />
-          <header className="text-center mt-4">
-            <h1 className=" bolder text-3xl sm:text-4xl">Register</h1>
-          </header>
-        </section>
-      </div>
-
-      {/* form section */}
-
-      <section>
-        <section className="p-[30px] mt-[40px] bg-[#F9FAFB]">
-          <div className="mx-auto max-w-5xl rounded-[20px] bg-white p-6 shadow-[0_10px_40px_rgba(0,0,0,0.08)] md:p-10">
-            <div className="mb-8 text-center">
-              <h2 className="bolder2 text-2xl text-[#334155] md:text-3xl">
-                Nominee Registration Form
-              </h2>
-              <p className="light2 mt-2 text-base text-slate-800 md:text-lg">
-                Fill in your details and we will connect you directly to the
-                nomination team on WhatsApp.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="grid gap-4 md:grid-cols-2">
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label
-                  htmlFor="fullName"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Full Name
-                </label>
-                <input
-                  id="fullName"
-                  name="fullName"
-                  type="text"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="email"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="phone"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Phone Number
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="category"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Award Category
-                </label>
-                <input
-                  id="category"
-                  name="category"
-                  type="text"
-                  value={formData.category}
-                  onChange={handleChange}
-                  placeholder="e.g. Music, Fashion, Entrepreneurship"
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="talent"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Talent / Skill
-                </label>
-                <input
-                  id="talent"
-                  name="talent"
-                  type="text"
-                  value={formData.talent}
-                  onChange={handleChange}
-                  placeholder="Tell us what you do"
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label
-                  htmlFor="location"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Location
-                </label>
-                <input
-                  id="location"
-                  name="location"
-                  type="text"
-                  value={formData.location}
-                  onChange={handleChange}
-                  placeholder="City / State"
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="flex flex-col gap-2 md:col-span-2">
-                <label
-                  htmlFor="motivation"
-                  className="bolder2 text-sm text-slate-700"
-                >
-                  Why do you want to be nominated?
-                </label>
-                <textarea
-                  id="motivation"
-                  name="motivation"
-                  rows="4"
-                  value={formData.motivation}
-                  onChange={handleChange}
-                  placeholder="Share a short note about your journey or achievement"
-                  required
-                  className="w-full rounded-[10px] border border-[#BCC6CC] p-3 outline-none focus:border-[#00B8FF]"
-                />
-              </div>
-
-              <div className="md:col-span-2 flex justify-center">
-                <button
-                  type="submit"
-                  className="mt-2 rounded-[10px] bg-[#00B8FF] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#00A8E6]"
-                >
-                  Send to WhatsApp
-                </button>
-              </div>
-            </form>
+      <div className="nominee-register-shell">
+        <header className="nominee-register-header">
+          <button
+            className="nominee-menu-button"
+            onClick={toggleSlide}
+            aria-label="Open navigation"
+            aria-expanded={slide}
+          >
+            <img src={menu} alt="" />
+          </button>
+          <img src={logo} alt="Merit and Value Awards" className="nominee-register-logo" />
+          <div className="nominee-register-header-content">
+            <p className="nomination-kicker">Merit and Value Awards</p>
+            <h1>Nominee Registration Portal</h1>
+            <p>Make your achievements part of the MVA recognition journey.</p>
           </div>
-        </section>
+        </header>
 
-        {/* Footer */}
-        <footer className="bg-black text-white text-center p-5">
-          <div className="p-[40px]  grid gap-[30px] justify-center items-center md:flex">
-            <div className="w-[430px] flex flex-col gap-[30px] text-center items-center">
-              <img src={logo} alt="Logo" className="h-[30px]" />
-              <span>Celebratng excellence and inspiring change</span>
+        <main className="nomination-register-page">
+          <div className="nomination-register-card">
+            {submitted ? (
+              <div className="nomination-success" role="status">
+                <p className="nomination-kicker">Registration received</p>
+                <h2>Thank you for registering.</h2>
+                <p>Your details and payment receipt have been securely submitted to the MVA team for review.</p>
+                <p>
+                  Now create your nominee campaign flyer. Add your photo, name, award category, and any other details to your design, then share it on your status and social media to invite friends and supporters to nominate you.
+                </p>
+                <a
+                  href="https://www.canva.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nomination-canva-link"
+                >
+                  Create your campaign flyer on Canva
+                </a>
+              </div>
+            ) : (
+              <>
+                <div className="nomination-register-intro">
+                  <p className="nomination-kicker">Official nominee registration</p>
+                  <h2>Tell us about your work.</h2>
+                  <p>
+                    This portal is for prospective nominees registering to participate in the MVA awards.
+                    Share your details, select an award category, and include a summary of your achievements.
+                  </p>
+                </div>
+
+                <div className="nomination-payment-notice">
+                  <strong>Registration fee: ₦1,000</strong>
+                  <span>Upload your payment receipt as a PDF or image. Your receipt is stored privately for the MVA team.</span>
+                </div>
+
+                <form onSubmit={handleSubmit} className="nomination-form">
+                  <label>
+                    Full name
+                    <input name="nomineeName" autoComplete="name" value={formData.nomineeName} onChange={handleChange} required />
+                  </label>
+                  <label>
+                    Email address
+                    <input type="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} required />
+                  </label>
+                  <label>
+                    Phone number
+                    <input type="tel" name="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} required />
+                  </label>
+                  <label>
+                    Award category
+                    <select name="category" value={formData.category} onChange={handleChange} required>
+                      <option value="">Select an official category</option>
+                      {officialAwardCategories.map((category) => <option key={category} value={category}>{category}</option>)}
+                    </select>
+                  </label>
+                  <label>
+                    City / state
+                    <input name="location" autoComplete="address-level2" value={formData.location} onChange={handleChange} required />
+                  </label>
+                  <label className="nomination-form-full">
+                    Why do you think you deserve this recognition? Share a summary of your achievements.
+                    <textarea name="achievements" rows="5" value={formData.achievements} onChange={handleChange} required />
+                  </label>
+                  <label className="nomination-form-full">
+                    Payment receipt (₦1,000 registration fee)
+                    <input
+                      type="file"
+                      name="paymentReceipt"
+                      accept="image/jpeg,image/png,image/webp,application/pdf"
+                      onChange={(event) => setPaymentReceipt(event.target.files?.[0] ?? null)}
+                      required
+                    />
+                    <span className="nomination-helper">PDF, JPG, PNG, or WebP. Maximum file size: 10 MB.</span>
+                  </label>
+                  <label className="nomination-payment-check nomination-form-full">
+                    <input
+                      type="checkbox"
+                      name="paymentConfirmed"
+                      checked={formData.paymentConfirmed}
+                      onChange={(event) => setFormData((previous) => ({ ...previous, paymentConfirmed: event.target.checked }))}
+                      required
+                    />
+                    <span>I understand the terms and conditions associated with the ₦1,000 registration fee and have uploaded my payment receipt.</span>
+                  </label>
+                  {errorMessage && <p className="nomination-error nomination-form-full" role="alert">{errorMessage}</p>}
+                  <button type="submit" className="button-theme bolder nomination-submit" disabled={submitting}>
+                    {submitting ? "Submitting registration..." : "Submit nominee registration"}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </main>
+
+        <footer className="nomination-register-footer">
+          <div className="nomination-footer-content">
+            <div className="nomination-footer-brand">
+              <img src={logo} alt="Merit and Value Awards" />
+              <span>Celebrating excellence and inspiring change</span>
             </div>
-
-            <div className="w-[430px] flex flex-col gap-[30px] text-center items-center">
-              <ul className="grid gap-[10px]">
-                {list.map((item, index) => (
-                  <li key={index}>
-                    <Link to={item.path} className="header-button">
-                      {item.name}
-                    </Link>
-                  </li>
+            <div className="nomination-footer-links">
+              <ul>
+                {list.map((item) => (
+                  <li key={item.path}><Link to={item.path} className="header-button">{item.name}</Link></li>
                 ))}
               </ul>
-              <div className="inline-flex gap-[30px]">
-                <a
-                  href="https://www.instagram.com/meritandvalueawards?igsh=MXA4NmpwczN0M2c3dA=="
-                  target="_blank"
-                >
-                  <img
-                    src={ig}
-                    alt="Instagram"
-                    className="h-[30px] md:h-[30px]"
-                  />
-                </a>
-                <a
-                  href="https://www.facebook.com/meritandvalueawards"
-                  target="_blank"
-                >
-                  <img
-                    src={fb}
-                    alt="Facebook"
-                    className="h-[30px] md:h-[30px]"
-                  />
-                </a>
-                <a href="https://x.com/mvaevent" target="_blank">
-                  <img src={x} alt="X" className="h-[30px] md:h-[30px]" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@_meritandvalueawards_?_r=1&_t=ZS-98KU4UeRLFs"
-                  target="_blank"
-                >
-                  <img
-                    src={tiktok}
-                    alt="tiktok"
-                    className="h-[30px] md:h-[30px]"
-                  />
-                </a>
-                <a
-                  href="https://youtube.com/@meritandvalueawards?si=eawtqPzlaQw77ym3"
-                  target="_blank"
-                >
-                  <img
-                    src={youtube}
-                    alt="youtube"
-                    className="h-[30px] md:h-[30px]"
-                  />
-                </a>
+              <div className="nomination-footer-socials">
+                <a href="https://www.instagram.com/meritandvalueawards?igsh=MXA4NmpwczN0M2c3dA==" target="_blank" rel="noreferrer"><img src={ig} alt="Instagram" /></a>
+                <a href="https://www.facebook.com/meritandvalueawards" target="_blank" rel="noreferrer"><img src={fb} alt="Facebook" /></a>
+                <a href="https://x.com/mvaevent" target="_blank" rel="noreferrer"><img src={x} alt="X" /></a>
+                <a href="https://www.tiktok.com/@_meritandvalueawards_?_r=1&_t=ZS-98KU4UeRLFs" target="_blank" rel="noreferrer"><img src={tiktok} alt="TikTok" /></a>
+                <a href="https://youtube.com/@meritandvalueawards?si=eawtqPzlaQw77ym3" target="_blank" rel="noreferrer"><img src={youtube} alt="YouTube" /></a>
               </div>
-              <div>
-                <Link to="/privacyPolicy">Privacy Policy</Link>
-              </div>
+              <Link to="/privacyPolicy">Privacy Policy</Link>
             </div>
           </div>
-          <span>&copy; 2026 Merit and value awards</span>
+          <p className="nomination-footer-copyright">&copy; 2026 Merit and Value Awards</p>
         </footer>
-      </section>
-    </>
+      </div>
+    </div>
   );
 };
 

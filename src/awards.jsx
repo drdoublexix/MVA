@@ -1,17 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import { list } from "./App.jsx";
 import "./index.css";
 import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
 import { Link } from "react-router";
-import music from "./assets/icons8-music.png";
-import movie from "./assets/icons8-movie.png";
-import dress from "./assets/icons8-dress.png";
-import card2 from "./assets/icons8-lightbulb.png";
-import phone from "./assets/icons8-phone.png";
-import charity from "./assets/icons8-charity.png";
-import dance from "./assets/icons8-dancing.png";
 import logo from "./assets/logo.png";
 import fb from "./assets/icons8-fb.svg";
 import ig from "./assets/icons8-ig.svg";
@@ -50,7 +42,7 @@ const Awards = () => {
           </ul>
         </aside>
 
-        <section className="w-full bg-black text-white p-3 h-[170px] md:text-3xl">
+        <section className="awards-hero">
           <button
             className="fixed top-0 left-0 bg-[#999999] rounded-[50%] z-[20] md:cursor-pointer fixed h-[45px] w-[50px] "
             onClick={toggleSlide}
@@ -64,107 +56,84 @@ const Awards = () => {
             alt="Logo"
             className="absolute top-0 right-0 h-[35px] md:h-[55px] p-2 z-[50]"
           />
-          <header className="text-center mt-4">
-            <h1 className=" bolder text-3xl sm:text-4xl">Award categories</h1>
-
-            <span className="light">
-              Recognizing Excellence Across Industries
-            </span>
+          <header className="awards-hero-content">
+            <p className="awards-kicker">MVA Awards &amp; Events</p>
+            <h1>Honoring Excellence. Spotlighting Impact. Inspiring the Future.</h1>
+            <p>
+              The Merit and Value Awards celebrate the visionaries, creators,
+              entrepreneurs, and change-makers who are not only achieving
+              greatness but actively defining the future of our communities.
+            </p>
           </header>
         </section>
       </div>
 
-      <section className="text-center p-2">
-        <h1 className="bolder2 text-2xl md:text-3xl mt-[20px]">Introduction</h1>
-        <p className="light2 text-3xl text-slate-300">
-          The Merit and Value Awards Ceremony honours outstanding achievement
-          across a wide range of categories. From music and film to
-          entrepreneurship and humanitarian service, we celebrate the
-          individuals and organisations shaping the future of Maiduguri and
-          Nigeria.
-        </p>
-      </section>
-
-      {/* Categories */}
-      <section className="text-center mt-[40px] bg-slate-100 p-4 md:p-[40px]">
-        <h1 className="mt-4 mb-4 bolder2 text-3xl text-slate-500">
-          Award Categories
-        </h1>
-        <div className="grid gap-5 md:flex justify-around items-center ">
-          <div className="w-[200px] h-[150px] bg-yellow-300 rounded-[30px] p-3 ">
-            <div className="card-img">
-              <img src={music} alt="Icon" />
-            </div>
-            <span className="bolder2 text-slate-800">Best music artist</span>
-          </div>
-
-          <div className="w-[200px] h-[150px] p-2 bg-blue-300 rounded-[30px] shadow-lg shadow-[0px_5px_70px_70px_70px_#FFFF]">
-            <div className="card-img">
-              <img src={movie} alt="Icon" />
-            </div>
-            <span className="bolder2 text-slate-800">Best in filming</span>
-          </div>
-
-          <div className="w-[200px] h-[150px] p-2 bg-red-300 rounded-[30px] shadow-lg shadow-[0px_5px_70px_70px_70px_#FFFF]">
-            <div className="card-img">
-              <img src={dress} alt="Icon" />
-            </div>
-            <span className="bolder2 text-slate-800">Best in fashion</span>
-          </div>
-
-          <div className="w-[200px] h-[150px] p-2 bg-orange-300 rounded-[30px] shadow-lg shadow-[0px_5px_70px_70px_70px_#FFFF] flex flex-col justify-center items-center">
-            <div className="card-img">
-              <img src={card2} alt="Icon" />
-            </div>
-            <span className="bolder2 text-slate-800 text-center leading-tight px-1">
-              Best entrepreneur
-            </span>
-          </div>
-
-          <div className="w-[200px] h-[150px] p-2 bg-purple-400 rounded-[30px] shadow-lg shadow-[0px_5px_70px_70px_70px_#FFFF] flex flex-col justify-center items-center">
-            <div className="card-img">
-              <img src={phone} alt="Icon" />
-            </div>
-            <span className="bolder2 text-[15px] text-slate-100 text-center leading-tight px-1">
-              Best content creator
-            </span>
-          </div>
-
-          <div className="w-[200px] h-[150px] bg-green-300 rounded-[30px] shadow-lg shadow-[0px_5px_70px_70px_70px_#FFFF]">
-            <div className="card-img">
-              <img src={charity} alt="Icon" />
-            </div>
-            <span className="bolder2 text-slate-800">Best Humanitarian</span>
-          </div>
-
-          <div className="w-[200px] h-[150px] p-2 bg-orange-400 rounded-[20px] shadow-lg shadow-[0px_5px_70px_70px_70px_#FFFF]">
-            <div className="card-img">
-              <img src={dance} alt="Icon" />
-            </div>
-            <span className="bolder2 text-slate-800">Best Performance</span>
-          </div>
+      <section className="awards-story">
+        <div className="awards-story-inner">
+          <p className="awards-kicker">Why MVA Awards matter</p>
+          <h2>Recognition that creates momentum.</h2>
+          <p>
+            The Merit and Value Awards (MVA) is more than a ceremony—it is a
+            national stage for excellence. We recognize individuals, brands, and
+            organizations that demonstrate exceptional creativity, grit, social
+            impact, and entrepreneurial leadership.
+          </p>
+          <p>
+            By honoring these trailblazers, we create powerful role models for
+            the younger generation, proving that hard work, innovation, and
+            determination pave the way to lasting success. Every winner and
+            nominee becomes part of the wider MVA ecosystem, gaining visibility,
+            credibility, and connections to further scale their impact.
+          </p>
         </div>
       </section>
-      {/* Nominee selection */}
-      <section className="mt-[40px] bg-black/70 text-white text-center">
-        <div className="grid">
-          <div>
-            <h1 className="bolder mt-[40px] text-3xl mb-[30px]">
-              How nominees are selected
-            </h1>
-            <p className="text-xl">
-              Nominees are identified through public nominations, community
-              recommendations, and the decisions of our independent panel of
-              professional judges. Final winners are selected based on impact,
-              quality of work, community contribution, and overall excellence.
-            </p>
-          </div>
 
-          <div className=" mt-[40px] flex justify-center items-center bg-[url('/src/assets/cta2.jpg')] no-repeat bg-cover bg-center mt-[30px] h-[300px] ">
-            <Link to="/nominate" className="button-theme bolder">
-              Nominate someone
-            </Link>
+      <section className="awards-categories">
+        <div className="awards-section-heading">
+          <p className="awards-kicker">Expanded award categories</p>
+          <h2>Many ways to move society forward.</h2>
+        </div>
+        <div className="awards-category-grid">
+          {[
+            ["01", "Entrepreneurship & Business Innovation", "Recognizing young founders, startups, and scalable business ventures driving economic growth and job creation."],
+            ["02", "Creativity, Arts & Content Creation", "Honoring talents in digital media, fashion, music, film, and visual arts who are pushing cultural boundaries."],
+            ["03", "Social Impact & Community Building", "Celebrating changemakers, humanitarians, and grassroots leaders solving pressing community challenges."],
+            ["04", "MVA Rise Special Recognition", "Shining a light on outstanding MVA Rise graduates and emerging talents turning skills into market success."],
+            ["05", "Inclusion & Advocacy", "Honoring champions of accessibility, equality, and representation, including advocates for persons living with disabilities."],
+          ].map(([number, title, body]) => (
+            <article className="awards-category-card" key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p><strong>{body}</strong></p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="awards-experience">
+        <div className="awards-experience-inner">
+          <div>
+            <p className="awards-kicker">The MVA winner experience</p>
+            <h2>More than a trophy.</h2>
           </div>
+          <p>
+            When you win or get nominated at the Merit and Value Awards, your
+            journey doesn&apos;t end on stage. MVA connects honorees with mentorship
+            networks, corporate sponsors, media visibility, and opportunities to
+            mentor the next wave of participants in our MVA Rise development
+            programs.
+          </p>
+        </div>
+      </section>
+
+      <section className="awards-cta">
+        <div>
+          <p className="awards-kicker">Your next move</p>
+          <h2>Put meaningful work in the spotlight.</h2>
+        </div>
+        <div className="awards-cta-actions">
+          <Link to="/nominate" className="button-theme bolder">Nominate a Changemaker</Link>
+          <Link to="/sponsors" className="button-theme secondary bolder">Explore Sponsorship &amp; Partnership</Link>
         </div>
       </section>
 

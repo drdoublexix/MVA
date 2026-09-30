@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
 import logo from "./assets/logo.png";
@@ -15,7 +15,7 @@ export const list = [
   { name: "Home", path: "/" },
   { name: "About us", path: "/aboutUs" },
   { name: "Awards", path: "/awards" },
-  { name: "Rise to fame", path: "/riseToFame" },
+  { name: "MVA Rise", path: "/mva-rise" },
   { name: "Nominate", path: "/nominate" },
   { name: "Sponsors", path: "/sponsors" },
   { name: "Gallery", path: "/gallery" },
@@ -23,11 +23,6 @@ export const list = [
 ];
 
 function App() {
-  const brand = [
-    { id: 1, image: logo },
-    { id: 2, text: "Celebrating Excellence, Inspiring change" },
-  ];
-
   const [slide, setSlide] = useState(false);
 
   const toggleSlide = () => {
@@ -73,209 +68,117 @@ function App() {
           />
 
           <div className="hero-content">
-            <div className="hero-ribbon">Celebrating Excellence, Inspiring change</div>
+            <div className="hero-ribbon">MVA Awards & Events + MVA Rise</div>
             <h1 className="hero-heading">
-              Merits And value awards
+              Celebrating Excellence. Building and Defining the Future.
             </h1>
             <p className="hero-subtext">
-              Recognising outstanding talent, creativitiy and inclusion in
-              Nigeria and beyond.
+              We don't just recognize greatness—we build it. Merit and Value
+              Awards (MVA) is a premier platform and developmental ecosystem
+              celebrating outstanding talent, creativity, and inclusion while
+              actively discovering, training, and connecting the next generation
+              of young leaders, creatives, and entrepreneurs.
             </p>
             <div className="hero-actions">
-              <Link to="/nominate" className="button-theme bolder">
-                Nominate someone
+              <Link to="/mva-rise" className="button-theme bolder">
+                Explore MVA Rise &amp; Programs
               </Link>
-              <Link to="/aboutUs" className="button-theme secondary bolder">
-                Discover our story
+              <Link to="/awards" className="button-theme secondary bolder">
+                View Awards / Nominate
               </Link>
             </div>
             <div className="hero-stats">
               <div className="hero-stat">
-                <span>2026</span>
-                <small>Annual ceremony</small>
+                <span>Rise</span>
+                <small>Skills &amp; opportunity</small>
               </div>
               <div className="hero-stat">
-                <span>Talent</span>
-                <small>Spotlight & recognition</small>
+                <span>Awards</span>
+                <small>Visibility &amp; recognition</small>
               </div>
               <div className="hero-stat">
-                <span>Inclusion</span>
-                <small>Open to every story</small>
+                <span>Impact</span>
+                <small>Inclusion in action</small>
               </div>
             </div>
           </div>
         </section>
       </div>
 
-      {/* Intro section */}
-      <section className="px-6 py-16 md:px-8 lg:px-12">
-        <h1 className="section-title">Who we are</h1>
-        <div className="intro-panel">
-          <p className="section-copy">
-            Merits and Value awards is a prestigious platform committed to
-            spreading, healing and promoting resilience and celebrating
-            excellence, creativity, culture and innovation.
-            <br />
-            Through our annual ceremony and flagship programs, we recognize
-            individuals and organisations making meaningful impact in
-            entertainment, the arts, entrepreneurship and their communities.
-            <br />
-            We believe talent knows no boundaries and that greatness is defined
-            by passion, creativity and determination.
-          </p>
-        </div>
-      </section>
-
-      {/*CTA section*/}
-
-      <section className="cta mx-4 my-6 rounded-[28px] border border-neutral-800 shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
-        <div className="cta-overlay">
-          <Link
-            to="/aboutUs"
-            className="cta-button text-black bolder transition-all duration-200"
-          >
-            Discover our story
-          </Link>
-        </div>
-      </section>
-
-      {/* Highlights */}
-
-      <section className="px-6 py-16 md:px-8 lg:px-12">
-        <h1 className="section-title">HIGHLIGHTS AND QUICK STATS</h1>
-        <div className="card-divs">
-          <Link to="/awards">
-            <div className="card border border-amber-500/20 bg-neutral-900/90">
-              <div className="card-img bg-amber-500/15">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="#FFD700"
-                  className="size-70"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 0 0-.584.859 6.753 6.753 0 0 0 6.138 5.6 6.73 6.73 0 0 0 2.743 1.346A6.707 6.707 0 0 1 9.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 0 0-2.25 2.25c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-2.25-2.25h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 0 1-1.112-3.173 6.73 6.73 0 0 0 2.743-1.347 6.753 6.753 0 0 0 6.139-5.6.75.75 0 0 0-.585-.858 47.077 47.077 0 0 0-3.07-.543V2.62a.75.75 0 0 0-.658-.744 49.22 49.22 0 0 0-6.093-.377c-2.063 0-4.096.128-6.093.377a.75.75 0 0 0-.657.744Zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 0 1 3.16 5.337a45.6 45.6 0 0 1 2.006-.343v.256Zm13.5 0v-.256c.674.1 1.343.214 2.006.343a5.265 5.265 0 0 1-2.863 3.207 6.72 6.72 0 0 0 .857-3.294Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="bolder mt-4 w-full text-center text-[20px] text-white">
-                Award categories
-              </div>
-            </div>
-          </Link>
-          <Link to="/nominate">
-            <div className="card border border-sky-500/20 bg-neutral-900/90">
-              <div className="card-img bg-sky-500/15">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="#2563EB"
-                  className="size-70"
-                >
-                  <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
-                  <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
-                </svg>
-              </div>
-              <div className="bolder mt-4 w-full text-center text-[20px] text-white">
-                Talented nominees
-              </div>
-            </div>
-          </Link>
-
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=11.8333,13.1500"
-            target="_blank"
-            rel="noopener noreferrer"
-            className=""
-          >
-            <div className="card border border-violet-500/20 bg-neutral-900/90">
-              <div className="card-img bg-violet-500/15">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={0.5}
-                  stroke="#9333EA"
-                  className="size-70"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m20.893 13.393-1.135-1.135a2.252 2.252 0 0 1-.421-.585l-1.08-2.16a.414.414 0 0 0-.663-.107.827.827 0 0 1-.812.21l-1.273-.363a.89.89 0 0 0-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.212.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 0 1-1.81 1.025 1.055 1.055 0 0 1-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.655-.261a2.25 2.25 0 0 1-1.383-2.46l.007-.042a2.25 2.25 0 0 1 .29-.787l.09-.15a2.25 2.25 0 0 1 2.37-1.048l1.178.236a1.125 1.125 0 0 0 1.302-.795l.208-.73a1.125 1.125 0 0 0-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 0 1-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 0 1-1.458-1.137l1.411-2.353a2.25 2.25 0 0 0 .286-.76m11.928 9.869A9 9 0 0 0 8.965 3.525m11.928 9.868A9 9 0 1 1 8.965 3.525"
-                  />
-                </svg>
-              </div>
-              <div className="bolder mt-4 w-full text-center text-[20px] text-white">
-                Maiduguri
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 md:px-8 lg:px-12">
-        <h1 className="bolder2 mt-3 text-center text-2xl text-white">
-          Our Flagship Events
-        </h1>
-
-        <div className="mt-[40px] grid grid-cols-1 justify-center items-center gap-10 md:grid-cols-2">
-          <div className="general-card border border-amber-500/20 bg-neutral-900/85">
-            <h1 className="bolder2 mt-2 text-center text-xl md:text-2xl text-white">
-              Annual award ceremony
-            </h1>
-            <p className="mt-[40px] text-center text-[14px] text-neutral-300 md:text-xl">
-              <b> Merit and Value Awards Ceremony 2026 Theme:</b> <br />
-              Celebrating Excellence and Inclusion A glamorous night celebrating
-              the best in music, film, fashion, entrepreneurship, humanitarian
-              work, and digital content creation in Maiduguri.
+      <main>
+        <section className="pillar-section px-6 py-16 md:px-8 lg:px-12">
+          <div className="section-intro">
+            <p className="section-kicker">One ecosystem. Two engines.</p>
+            <h2 className="section-title">Turn potential into visibility.</h2>
+            <p className="section-copy">
+              MVA develops the people shaping tomorrow, then gives their work a
+              stage, a network, and the recognition it deserves.
             </p>
-            <div className="flex justify-center mt-5">
-              <Link
-                to="/awards"
-                className="p-2 bolder2 rounded-[10px] bg-amber-500/90 text-black cursor-pointer"
-              >
-                View Awards
-              </Link>
-            </div>
           </div>
+          <div className="pillar-grid">
+            <article className="pillar-card rise-pillar">
+              <span className="pillar-number">01 / MVA RISE</span>
+              <h3>Discover, Develop &amp; Launch</h3>
+              <p>
+                Through structured bootcamps, practical training, professional
+                mentorship, and certification, MVA Rise takes raw talent and
+                turns it into viable careers and businesses. Specialized tracks
+                like the MVA Rise Young Women Skills Initiative serve ages 15–24
+                with real pathways to entrepreneurship and employment.
+              </p>
+              <Link to="/mva-rise" className="text-link">Learn About MVA Rise <span aria-hidden="true">→</span></Link>
+            </article>
+            <article className="pillar-card awards-pillar">
+              <span className="pillar-number">02 / MVA AWARDS &amp; EVENTS</span>
+              <h3>Celebrating Impact &amp; Excellence</h3>
+              <p>
+                The prestigious Annual Merit and Value Awards Ceremony and our
+                dynamic showcase events put a powerful spotlight on innovators,
+                creators, entrepreneurs, and change-makers moving Nigeria and
+                beyond forward. Winning with MVA is a gateway to visibility and
+                networks.
+              </p>
+              <Link to="/awards" className="text-link">View Awards / Nominate <span aria-hidden="true">→</span></Link>
+            </article>
+          </div>
+        </section>
 
-          <div className="general-card border border-sky-500/20 bg-neutral-900/85">
-            <h1 className="bolder2 mt-1 text-center text-xl md:text-2xl text-white">
-              Rise to fame talent hunt 2027
-            </h1>
-            <p className="mt-[40px] text-center text-[14px] text-neutral-300 md:text-xl">
-              <b> Rise to Fame” Talent Hunt 2027 Theme:</b> <br />
-              Gateway to Merit and Value Awards A groundbreaking talent hunt
-              designed to discover, nurture, and celebrate exceptional talents —
-              with a powerful commitment to inclusion for persons living with
-              disabilities.
-            </p>
-            <div className="flex justify-center mt-5">
-              <Link
-                to="/aboutUs"
-                className="p-2 bolder2 rounded-[10px] bg-sky-500/90 text-black cursor-pointer"
-              >
-                Learn More
-              </Link>
-            </div>
+        <section className="pathway-section px-6 py-16 md:px-8 lg:px-12">
+          <div className="section-intro pathway-intro">
+            <p className="section-kicker">The MVA Rise Pathway</p>
+            <h2 className="section-title">From first spark to next chapter.</h2>
+            <p className="section-copy">A practical, connected journey for talent ready to move.</p>
           </div>
-        </div>
-      </section>
-      {/* About inclusion */}
-      <section className="mx-4 my-6 rounded-[28px] border border-neutral-800 bg-gradient-to-br from-amber-500/12 to-neutral-900 p-8 text-center text-white shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
-        <h1 className="bolder mt-4 text-3xl">About inclusion</h1>
-        <br />
-        <h2 className="light mb-4 text-xl">
-          We Don’t Just Celebrate Talent. We Break Barriers.
-        </h2>
-        <p className="light p-5 text-center text-neutral-300">
-          Merit and Value Awards is built on a foundation of equality. We create
-          platforms where every voice is heard, every talent is seen, and every
-          individual — regardless of ability —has an equal chance to shine.
-        </p>
-      </section>
+          <div className="pathway-grid">
+            {[
+              ["01", "Discover", "Finding talent through community events, social media, and strategic partnerships."],
+              ["02", "Develop", "Practical, high-value training in digital skills, fashion, beauty, content creation, and entrepreneurship."],
+              ["03", "Certify & Mentor", "Industry credentials and guidance from experienced professionals who know the road ahead."],
+              ["04", "Connect & Launch", "Real markets, funding opportunities, corporate cohorts, and the MVA recognition stage."],
+            ].map(([number, title, body]) => (
+              <article className="pathway-step" key={number}>
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="program-feature mx-4 my-8 md:mx-8 lg:mx-12">
+          <div>
+            <p className="section-kicker">Featured program</p>
+            <h2>MVA Rise Young Women Skills Initiative</h2>
+            <p>
+              A focused youth development initiative equipping young women aged
+              15–24 with practical, marketable skills, mentorship, and
+              opportunities for personal and professional growth.
+            </p>
+            <span className="program-tag">Sponsored Cohorts &amp; Open Applications Available</span>
+          </div>
+          <Link to="/sponsors" className="button-theme bolder">Join / Sponsor a Cohort</Link>
+        </section>
+      </main>
 
       {/* Testimonials */}
 

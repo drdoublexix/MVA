@@ -35,6 +35,24 @@ const Gallery = () => {
     setSlide(!slide);
   };
 
+  const galleryImages = [
+    [img1, "MVA Awards ceremony", "Awards & Events"],
+    [img2, "Community recognition", "Awards & Events"],
+    [img3, "Creative talent spotlight", "MVA Rise"],
+    [img4, "MVA event experience", "Awards & Events"],
+    [img5, "Emerging creator", "MVA Rise"],
+    [img6, "Recognition in action", "Awards & Events"],
+    [img7, "Community and culture", "Impact"],
+    [img8, "Creative showcase", "MVA Rise"],
+    [img9, "Behind the scenes", "Awards & Events"],
+    [img10, "MVA audience", "Impact"],
+    [img11, "Talent on stage", "Awards & Events"],
+    [img12, "Celebrating progress", "Impact"],
+    [img13, "MVA community", "Impact"],
+    [img14, "Creative excellence", "MVA Rise"],
+    [award1, "Past award recipient", "Recognition"],
+  ];
+
   return (
     <>
       <div className="flex">
@@ -56,7 +74,7 @@ const Gallery = () => {
           </ul>
         </aside>
 
-        <section className="bg-black text-white h-[150px] w-full flex flex-col ">
+        <section className="gallery-hero">
           <button
             className="fixed top-0 left-0 bg-[#999999] rounded-[50%] z-[20] md:cursor-pointer fixed h-[45px] w-[50px] "
             onClick={toggleSlide}
@@ -69,56 +87,61 @@ const Gallery = () => {
             alt="Logo"
             className="absolute top-0 right-0 h-[35px] md:h-[55px] p-2 z-[50]"
           />
-          <div className="grid justify-center items-center h-[170px]">
+          <div className="gallery-hero-content">
             <header>
-              <h1 className="text-[50px] text-center mb-2 bolder md:text-4xl ">
-                Gallery
-              </h1>
-              <h2 className="mt-[30px] text-[20px]">
-                Captured moments of excellence
-              </h2>
+              <p className="gallery-kicker">The MVA story in motion</p>
+              <h1>People. Progress. Recognition.</h1>
+              <h2>Explore the moments where potential becomes visible.</h2>
             </header>
           </div>
         </section>
       </div>
 
-      <section className=" text-center p-4">
-        <h1 className="text-xl text-slate-400 text-center mb-2 bolder2 md:text-4xl ">
-          Merit and Value Awards 2025 — Highlights
-        </h1>
-        <div className="border-none p-3 border-slate-400 grid grid-cols-1 gap-4 md:grid-cols-3 border-2 border-dashed">
-          <img src={img1} alt="image" />
-          <img src={img2} alt="image" />
-          <img src={img3} alt="image" />
-          <img src={img4} alt="image" />
-          <img src={img5} alt="image" />
-          <img src={img6} alt="image" />
-          <img src={img7} alt="image" />
-          <img src={img8} alt="image" />
-          <img src={img9} alt="image" />
-          <img src={img10} alt="image" />
-          <img src={img11} alt="image" />
-          <img src={img12} alt="image" />
-          <img src={img13} alt="image" />
-          <img src={img14} alt="image" />
-          <img src={award1} alt="image" />
-        </div>
-
-        <div className="">
-          <h1 className="text-xl text-slate-400 text-center mb-2 bolder2 md:text-4xl ">
-            Videos
-          </h1>
-
-          <div className="grid gap-5 md: flex flex-col items-center justify-center">
-            <video src={vid2} controls></video>
-            <video src={vid1} controls></video>
+      <main className="gallery-page">
+        <section className="gallery-intro">
+          <div className="gallery-intro-inner">
+            <div>
+              <p className="gallery-kicker">A living archive</p>
+              <h2>Every frame carries a piece of the MVA journey.</h2>
+            </div>
+            <p>
+              From the people building new skills through MVA Rise to the creators,
+              enterprises, and changemakers celebrated at MVA Awards &amp; Events,
+              this is a record of progress, participation, and impact.
+            </p>
           </div>
-        </div>
-      </section>
-      {/* Rise to fame section */}
+        </section>
+
+        <section className="gallery-media-section">
+          <div className="gallery-section-heading">
+            <p className="gallery-kicker">Photo archive</p>
+            <h2>Moments that move the story forward.</h2>
+          </div>
+          <div className="gallery-grid">
+            {galleryImages.map(([image, alt, label]) => (
+              <figure className="gallery-item" key={image}>
+                <img src={image} alt={alt} />
+                <figcaption><span>{label}</span><strong>{alt}</strong></figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section className="gallery-video-section">
+          <div className="gallery-section-heading">
+            <p className="gallery-kicker">Watch the energy</p>
+            <h2>Recognition is an experience.</h2>
+          </div>
+          <div className="gallery-video-grid">
+            <video src={vid2} controls aria-label="MVA event highlights" />
+            <video src={vid1} controls aria-label="MVA community highlights" />
+          </div>
+        </section>
+      </main>
+      {/* MVA Rise section */}
       {/* <section className="p-[30px]">
         <h1 className="text-xl text-slate-500 text-center mb-2 bolder2 md:text-4xl ">
-          Rise to Fame Talent Hunt — Audition & Event Highlights
+          MVA Rise — Development & Event Highlights
         </h1>
 
         <div className="h-[350px] w-full border-dashed p-3 border-slate-400 grid grid-cols-1 gap-4 md:grid-cols-3 border-2 border-dashed"></div>

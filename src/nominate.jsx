@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { list } from "./App.jsx";
 import "./index.css";
@@ -10,6 +10,7 @@ import ig from "./assets/icons8-ig.svg";
 import x from "./assets/icons8-x-50.png";
 import youtube from "./assets/icons8-youtube.png";
 import tiktok from "./assets/icons8-tiktok-50.png";
+import { officialAwardCategories } from "./officialAwardCategories.js";
 
 const Nominate = () => {
   const [slide, setSlide] = useState(false);
@@ -18,38 +19,27 @@ const Nominate = () => {
     setSlide(!slide);
   };
 
-  const categories = [
-    "Best Music Artist / Performer",
-    "Best in Film / Storytelling",
-    "Best in Fashion & Design",
-    "Best Entrepreneur / Business Innovation",
-    "Best Digital Content Creator",
-    "Best Humanitarian / Community Service",
-    "Best Performing Arts (Dance / Drama)",
-    "Inclusion Champion of the Year",
-  ];
-
   const steps = [
     {
-      title: "Follow the official pages",
-      text: "Stay connected with our Instagram and TikTok so you never miss a live category post.",
+      title: "Visit the Voting Page on Our Official Website",
+      text: "Visit the voting section on our website to explore all available categories and find the nominee you want to support.",
     },
     {
-      title: "Find the right category",
-      text: "Each category has its own post, so browse carefully and spot the one that fits the person you want to celebrate.",
+      title: "Make Your Payment",
+      text: "Votes are priced at ₦100 each. You can cast as many votes as you wish—simply transfer the total amount for your desired number of votes to our official account, Every ₦100 translates to one vote.",
     },
     {
-      title: "Leave a clear nomination",
-      text: "Use the required format with the nominee name, category, reason, and the official hashtag.",
+      title: "Upload Your Receipt",
+      text: "Upload or attach your transaction payment receipt directly to the form, ensuring it matches your submitted details.",
     },
     {
-      title: "Watch the public count",
-      text: "The nomination count remains visible to everyone, which keeps the process transparent and fair.",
+      title: "Submit & Watch the Count Live",
+      text: "Click the Submit button to complete your entry and validate your votes and watch the public tally updates automatically on the leaderboard in real-time for full transparency.",
     },
   ];
 
   const rules = [
-    "One nomination per person, per category.",
+    "One nomination per person, per category. (You can nominate in multiple different categories, but only one entry per category is allowed).",
     "Use the official format so your entry is counted properly.",
     "Self-nominations are not accepted.",
     "All nominees must be genuine individuals or organisations connected to Nigeria.",
@@ -122,23 +112,29 @@ const Nominate = () => {
               <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
                 <div>
                   <p className="mb-3 inline-flex rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-sm text-amber-400">
-                    Public nominations opening soon
+                    Free public nominations
                   </p>
                   <h2 className="text-3xl font-bold text-white md:text-4xl">
-                    Help us honour the people shaping Maiduguri and Nigeria.
+                    Celebrate someone making a difference.
                   </h2>
                   <p className="mt-4 text-base leading-7 text-neutral-300">
-                    Your nomination helps us recognise impact, excellence,
-                    creativity, and service. Every voice matters, and every
-                    nomination contributes to a fairer public selection process.
+                    Public nominations are free. If your nominee has completed
+                    their official MVA registration, tell us who they are, their
+                    award category, and why their work deserves recognition.
                   </p>
 
                   <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      to="/register"
+                      className="rounded-full bg-amber-500 px-6 py-3 font-semibold text-black transition hover:bg-amber-400"
+                    >
+                      Register as a nominee
+                    </Link>
                     <a
                       href="#how-it-works"
                       className="rounded-full bg-amber-500 px-6 py-3 font-semibold text-black transition hover:bg-amber-400"
                     >
-                      See how it works
+                      View voting steps
                     </a>
                     <button
                       onClick={handleShare}
@@ -149,53 +145,24 @@ const Nominate = () => {
                   </div>
                 </div>
 
-                <div className="rounded-[24px] border border-neutral-800 bg-neutral-950/80 p-6">
-                  <p className="text-sm uppercase tracking-[0.3em] text-neutral-500">
-                    Nomination format
+                <div className="rounded-[20px] border border-neutral-800 bg-neutral-950/80 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-400">
+                    Nominate for free
                   </p>
-                  <div className="mt-4 rounded-2xl border border-dashed border-amber-500/40 bg-neutral-900 p-4 text-sm text-neutral-300">
-                    <p className="font-semibold text-amber-400">
-                      Name: [Full name]
-                    </p>
-                    <p className="mt-2">Category: [Award category]</p>
-                    <p className="mt-2">Reason: [Why they deserve to win]</p>
-                    <p className="mt-2">#MeritAndValueAwards2026</p>
-                  </div>
-                  <p className="mt-4 text-sm text-neutral-400">
-                    Follow our official pages for the live announcement of each
-                    category post.
+                  <h3 className="mt-3 text-xl font-bold text-white">
+                    Know someone who deserves the spotlight?
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-neutral-400">
+                    Send us their details and the reason you are nominating them.
+                    We will open a WhatsApp message ready for you to send.
                   </p>
-                </div>
-              </div>
-            </section>
-
-            <section id="how-it-works" className="mx-auto mt-10 max-w-6xl">
-              <div className="mb-6 text-center">
-                <p className="text-sm uppercase tracking-[0.35em] text-amber-400">
-                  How it works
-                </p>
-                <h2 className="mt-2 text-3xl font-bold text-white">
-                  A simple four-step process
-                </h2>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                {steps.map((step, index) => (
-                  <div
-                    key={index}
-                    className="rounded-[22px] border border-neutral-800 bg-neutral-900 p-6"
+                  <Link
+                    to="/nominate/submit"
+                    className="mt-4 inline-flex items-center justify-center rounded-full bg-amber-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-amber-400"
                   >
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/10 text-lg font-bold text-amber-400">
-                      {index + 1}
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-7 text-neutral-400">
-                      {step.text}
-                    </p>
-                  </div>
-                ))}
+                    Nominate someone
+                  </Link>
+                </div>
               </div>
             </section>
 
@@ -210,7 +177,7 @@ const Nominate = () => {
               </div>
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                {categories.map((category, index) => (
+                {officialAwardCategories.map((category, index) => (
                   <div
                     key={index}
                     className="rounded-[20px] border border-neutral-800 bg-neutral-950/70 p-4"
@@ -223,6 +190,14 @@ const Nominate = () => {
                     </h3>
                   </div>
                 ))}
+              </div>
+              <div className="mt-6 flex justify-center">
+                <Link
+                  to="/register"
+                  className="rounded-full border border-amber-500 px-6 py-3 font-semibold text-amber-400 transition hover:bg-amber-500 hover:text-black"
+                >
+                  Continue to registration
+                </Link>
               </div>
             </section>
 
@@ -278,6 +253,39 @@ const Nominate = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+            </section>
+
+            <section id="how-it-works" className="mx-auto mt-10 max-w-6xl">
+              <div className="mb-6 text-center">
+                <p className="text-sm uppercase tracking-[0.35em] text-amber-400">
+                  Final voting process
+                </p>
+                <h2 className="mt-2 text-3xl font-bold text-white">
+                  Vote for the qualifying nominees
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-neutral-400">
+                  Once nominations are reviewed and qualifying nominees are announced, supporters can vote. Each vote costs ₦100.
+                </p>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {steps.map((step, index) => (
+                  <div
+                    key={index}
+                    className="rounded-[22px] border border-neutral-800 bg-neutral-900 p-6"
+                  >
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/10 text-lg font-bold text-amber-400">
+                      {index + 1}
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-neutral-400">
+                      {step.text}
+                    </p>
+                  </div>
+                ))}
               </div>
             </section>
           </main>

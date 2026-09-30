@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { list } from "./App.jsx";
 import "./index.css";
@@ -6,9 +5,6 @@ import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
 import { Link } from "react-router";
 import { Helmet } from "react-helmet-async";
-import card1 from "./assets/icons8-medal.png";
-import card2 from "./assets/icons8-lightbulb.png";
-import card3 from "./assets/icons8-handshake.png";
 import logo from "./assets/logo.png";
 import fb from "./assets/icons8-fb.svg";
 import ig from "./assets/icons8-ig.svg";
@@ -55,7 +51,7 @@ const AboutUs = () => {
         </aside>
 
         {/* body section */}
-        <section className="h-[200px] bg-[url('./assets/AboutHero.jpg')] md:bg-cover w-[100vw] h-[150px]">
+        <section className="about-hero-section bg-[url('./assets/AboutHero.jpg')]">
           <button
             className="fixed top-0 left-0 bg-[#999999] rounded-[50%] z-[20] md:cursor-pointer fixed h-[45px] w-[50px] "
             onClick={toggleSlide}
@@ -68,165 +64,128 @@ const AboutUs = () => {
             alt="Logo"
             className="absolute top-0 right-0 h-[35px] md:h-[55px] p-2 z-[50]"
           />
-          <header className="text-center mt-[50px] text-2xl bolder text-white sm: mt-">
-            <h1> About Merit and value Awards</h1>
-            <br />
+          <header className="about-hero-content text-center bolder text-white">
+            <p className="about-hero-kicker">MVA Rise + MVA Awards &amp; Events</p>
+            <h1>Defining the Future. Building Excellence.</h1>
             <h2 className="light text-[17px]">
-              Our Story, Our Mission, Our Vision
+              We don’t just celebrate success—we build the systems, skills, and pathways that make it possible.
             </h2>
           </header>
         </section>
       </div>
-      {/* About Section */}
-      <section className="bg-gradient-to-b from-[#F3F4F6] to-[#E5E7EB] py-[60px] px-[30px]">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="bolder text-2xl md:text-3xl text-[#1F2937] mb-[30px] text-center">
-            Who We Are
-          </h2>
-          <p className="light2 text-[#374151] text-[25px] leading-8 tracking-wide text-justify md:text-xl">
-            Merit and Value Awards is a reputable platform based in Maiduguri,
-            Nigeria, committed to celebrating excellence, creativity, culture,
-            and innovation. We recognize individuals and organizations that are
-            making meaningful impact across the entertainment and creative
-            industries, in entrepreneurship, and in community development. Our
-            annual awards ceremony brings together artists, industry
-            stakeholders, and community members to honour exceptional
-            achievements, promote creative expression and diversity, and inspire
-            the next generation of talents.
-            <br />
-            <br />
-            Maiduguri has seen a growing wave of young and seasoned talents in
-            recent years — musicians, artists, and content creators making
-            notable strides. Yet many lack the visibility and recognition they
-            deserve. Merit and Value Awards was founded to bridge that gap: to
-            provide a platform where talent is celebrated, acknowledged, and
-            elevated.
-          </p>
-        </div>
-      </section>
-
-      {/* Mission and Vision */}
-      <section className="bg-gradient-to-r from-[#DBEAFE] to-[#BAE6FD] py-[60px] px-[30px]">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-[50px]">
-          {/* Mission */}
-          <div className="bg-white rounded-lg shadow-md p-[40px] border-l-4 border-[#0284C7]">
-            <h3 className="bolder text-2xl text-[#0C4A6E] mb-[20px]">
-              Mission
-            </h3>
-            <p className="light2 text-[#334155] text-xl leading-8 tracking-wide">
-              To discover, celebrate, and empower exceptional talent —
-              championing excellence, inclusion, and creativity in Maiduguri and
-              across Nigeria.
+      <main className="about-page">
+        <section className="about-story-section">
+          <div className="about-story-inner">
+            <p className="about-kicker">Our expanded story &amp; identity</p>
+            <h2>Where talent meets opportunity.</h2>
+            <p>
+              Merit and Value Awards (MVA) is a forward-thinking, multifaceted
+              enterprise committed to driving sustainable human capital
+              development, economic empowerment, and excellence across Nigeria
+              and beyond.
+            </p>
+            <p>
+              Founded on the belief that true progress happens when talent meets
+              opportunity, MVA has evolved beyond a traditional award ceremony.
+              Today, we operate a powerful dual ecosystem: MVA Rise, our
+              flagship talent, skills, and opportunity development arm, and MVA
+              Awards &amp; Events, which spots, honors, and amplifies the brightest
+              minds in arts, business, and innovation.
+            </p>
+            <p>
+              We are a registered enterprise driven by impact, sustainability,
+              and growth. Young people should not have to wait for luck to
+              change their lives—they need practical skills, professional
+              mentorship, financial literacy, and direct pathways to the market.
+              By taking matters into our own hands, we are shaping an inclusive
+              future where every young innovator, creator, and entrepreneur can
+              build something meaningful.
             </p>
           </div>
-          {/* Vision */}
-          <div className="bg-white rounded-lg shadow-md p-[40px] border-l-4 border-[#0EA5E9]">
-            <h3 className="bolder text-2xl text-[#0C4A6E] mb-[20px]">Vision</h3>
-            <p className="light2 text-[#334155] text-xl  leading-8 tracking-wide">
-              To become the leading platform for inclusive talent recognition in
-              Nigeria, creating pathways for artists, creatives, and innovators
-              to gain the visibility and opportunities they deserve.
-            </p>
+        </section>
+
+        <section className="about-direction-section">
+          <div className="about-section-heading">
+            <p className="about-kicker">Our direction</p>
+            <h2>Ambition with a practical route forward.</h2>
           </div>
-        </div>
-      </section>
-      {/* Core values */}
-      <section className="p-[30px] light2 bg-orange-100">
-        <h1 className="text-3xl bolder2 text-[#1F2937] text-center ">Core Values</h1>
-        {/* Card Container */}
-        <div className="grid mt-[40px] justify-center items-center md:flex justify-around gap-10">
-          {/* Cards */}
-          <div className=" bg-[#ADD8E6] shadow-lg shadow-[5px_5px_70px_70px_70px_#FFFF] w-[350px] h-[250px] p-3 rounded-[20px]">
-            <div className="card-img ">
-              <img src={card1} alt="card" className="h-[150px]" />
-            </div>
-            <div className="text-center">
-              <span className="bolder2 text-[#334155] text-2xl">
-                Excellence
-              </span>
-            </div>
-          </div>
-
-          <div className=" bg-[#6EE7B7] shadow-lg shadow-[5px_5px_70px_70px_70px_#FFFF] w-[350px] h-[250px] p-3 rounded-[20px]">
-            <div className="card-img ">
-              <img src={card2} alt="card" className="h-[150px]" />
-            </div>
-            <div className="text-center">
-              <span className="bolder2 text-[#334155] text-2xl">
-                Innovation
-              </span>
-            </div>
-          </div>
-
-          <div className=" bg-[#FACC15] shadow-lg shadow-[5px_5px_70px_70px_70px_#FFFF] w-[350px] h-[250px] p-3 rounded-[20px]">
-            <div className="card-img ">
-              <img src={card3} alt="card" className="h-[120px]" />
-            </div>
-            <div className="text-center">
-              <span className="bolder2 text-[#334155] text-2xl">Inclusion</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Programs */}
-
-      <section className="p-4">
-        <h1 className="text-center bolder2 text-2xl">Our programs</h1>
-
-        <div className="mt-6 max-w-5xl mx-auto grid gap-6 md:grid-cols-3">
-          <div className="bg-white rounded-lg shadow-md p-6 flex gap-4 items-start">
-            <img
-              src={card1}
-              alt="Awards"
-              className="h-12 w-12 object-contain mt-1"
-            />
-            <div>
-              <h2 className="bolder2 text-xl">Annual Awards Ceremony</h2>
-              <p className="mt-2 text-[#374151] leading-7">
-                Our flagship event celebrates the best in music, film, fashion,
-                humanitarian work, digital content, and more. Each year, we
-                bring together the brightest names and rising stars in Maiduguri
-                for a night of glamour, recognition, and inspiration.
+          <div className="about-direction-grid">
+            <article className="about-direction-card vision-card">
+              <span>Our vision</span>
+              <h3>Build Africa’s most trusted talent-to-value platform.</h3>
+              <p className="font-semibold"> {/* Added font-semibold or font-bold */}
+                To be Africa&apos;s leading platform for discovering, developing,
+                and celebrating young talent—transforming raw potential into
+                thriving careers, enterprises, and enduring economic value.
               </p>
-            </div>
+            </article>
+            <article className="about-direction-card mission-card">
+              <span>Our mission</span>
+              <ul className="font-semibold"> {/* Adding it here bolds all list items at once */}
+                <li>Equip the younger generation with high-demand, practical skills through structured training and mentorship.</li>
+                <li>Connect developed talent directly to real-world opportunities, employment, and market networks.</li>
+                <li>Celebrate, reward, and amplify outstanding achievement, creativity, and leadership through prestigious platforms.</li>
+                <li>Foster total inclusion so talent has equal access to growth and visibility, regardless of background, gender, or physical ability.</li>
+              </ul>
+            </article>
           </div>
+        </section>
 
-          <div className="bg-white rounded-lg shadow-md p-6 flex gap-4 items-start">
-            <img
-              src={card2}
-              alt="Talent"
-              className="h-12 w-12 object-contain mt-1"
-            />
-            <div>
-              <h2 className="bolder2 text-xl">Rise to Fame Talent Hunt</h2>
-              <p className="mt-2 text-[#374151] leading-7">
-                A groundbreaking talent discovery competition designed to find
-                and nurture exceptional talent — with a bold commitment to
-                inclusivity for persons living with disabilities. Participants
-                compete in music, dance, fashion design, storytelling, and
-                visual arts.
-              </p>
-            </div>
+        <section className="about-pillars-section">
+          <div className="about-section-heading">
+            <p className="about-kicker">How we create impact</p>
+            <h2>The two pillars of MVA.</h2>
           </div>
+          <div className="about-pillar-grid">
+            <article className="about-pillar-card rise-about-card">
+              <span className="about-pillar-label">01 / Development engine</span>
+              <h3>MVA Rise</h3>
+              <strong>Discover. Develop. Certify. Connect.</strong>
+              <p>
+                MVA Rise runs intensive bootcamps, professional training courses
+                spanning digital skills, fashion, beauty, content creation, and
+                entrepreneurship, plus specialized programs like the MVA Rise
+                Young Women Skills Initiative for ages 15–24. It bridges the gap
+                between raw talent and economic self-sufficiency.
+              </p>
+              <Link to="/mva-rise" className="about-link">Explore MVA Rise <span aria-hidden="true">→</span></Link>
+            </article>
+            <article className="about-pillar-card awards-about-card">
+              <span className="about-pillar-label">02 / Recognition stage</span>
+              <h3>MVA Awards &amp; Events</h3>
+              <strong>Spotlight. Validate. Amplify.</strong>
+              <p>
+                We host the annual Merit and Value Awards Ceremony and high-
+                profile showcases that put a national and international spotlight
+                on industry leaders, creative geniuses, outstanding brands, and
+                rising stars moving society forward.
+              </p>
+              <Link to="/awards" className="about-link">Explore the awards <span aria-hidden="true">→</span></Link>
+            </article>
+          </div>
+        </section>
 
-          <div className="bg-white rounded-lg shadow-md p-6 flex gap-4 items-start">
-            <img
-              src={card3}
-              alt="Community"
-              className="h-12 w-12 object-contain mt-1"
-            />
-            <div>
-              <h2 className="bolder2 text-xl">Community Engagement</h2>
-              <p className="mt-2 text-[#374151] leading-7">
-                Beyond the events, we partner with NGOs, advocacy groups,
-                schools, and corporate organisations to promote creative
-                education, youth empowerment, and social inclusion.
-              </p>
-            </div>
+        <section className="about-values-section">
+          <div className="about-section-heading">
+            <p className="about-kicker">What guides us</p>
+            <h2>Our core values.</h2>
           </div>
-        </div>
-      </section>
+          <div className="about-values-grid">
+            {[
+              ["Excellence", "We hold ourselves and our participants to the highest standards of quality and professionalism."],
+              ["Inclusion", "We break barriers. Talent knows no bounds, and our programs create equal opportunity for persons living with disabilities and underserved groups."],
+              ["Agency & Action", "We do not wait for change; we build it. We take active responsibility for pathways that lead to youth employment and enterprise growth."],
+              ["Sustainability", "We build impact models that are scalable, sustainable, and backed by powerful corporate partnerships and sponsored cohorts."],
+            ].map(([title, body], index) => (
+              <article className="about-value" key={title}>
+                <span>0{index + 1}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
 
       {/* The team */}
 
@@ -259,7 +218,7 @@ const AboutUs = () => {
               </p>
               <p className="mt-3 text-sm leading-7 text-gray-700">
                 Bachelor of Science (B.Sc.) Microbiology, University of
-                Maiduguri. Humanitarian, entrepreneur, and influencer. With over 10 years 
+                Maiduguri. Humanitarian, entrepreneur, and influencer. With over 10 years
                 of experience in media consultion, content creation, and event planning,
                 Jane leads the overall strategic direction, programming, fundraising, and
                 partnerships of Merit and Value Awards, ensuring the platform
