@@ -1130,11 +1130,19 @@ body {
   background: linear-gradient(135deg, rgba(2, 6, 23, 0.92), rgba(14, 116, 144, 0.36)), url('./assets/stardombg.JPG') center/cover;
 }
 
+.rise-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(2, 6, 18, 0.94) 0%, rgba(2, 6, 18, 0.86) 56%, rgba(2, 6, 18, 0.72) 100%);
+}
+
 .rise-hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.24), transparent 30%);
+  background: radial-gradient(circle at 82% 18%, rgba(251, 191, 36, 0.12), transparent 34%);
+  pointer-events: none;
 }
 
 .rise-hero-content {
@@ -1173,10 +1181,28 @@ body {
 .rise-hero-content > p:not(.rise-kicker) {
   max-width: 720px;
   margin: 22px auto 0;
-  color: #dbe4ef;
+  color: #fff;
   font-family: Josefin-sans;
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   line-height: 1.65;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75);
+}
+
+.rise-hero-content h1 {
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.55);
+}
+
+.nominate-page-header {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.28);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(217, 119, 6, 0.18), transparent 58%),
+    linear-gradient(135deg, #08090c 0%, #17140d 52%, #090a0d 100%);
+}
+
+.nominate-page-header h1 {
+  text-shadow: 0 2px 20px rgba(245, 158, 11, 0.18);
 }
 
 .rise-hero-actions,
