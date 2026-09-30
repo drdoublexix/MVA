@@ -154,7 +154,6 @@ const Nominate = () => {
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-neutral-400">
                     Send us their details and the reason you are nominating them.
-                    We will open a WhatsApp message ready for you to send.
                   </p>
                   <Link
                     to="/nominate/submit"
