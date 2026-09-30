@@ -191,7 +191,7 @@ const Register = () => {
                     <textarea name="achievements" rows="5" value={formData.achievements} onChange={handleChange} required />
                   </label>
                   <label className="nomination-form-full">
-                    Payment receipt (₦1,000 registration fee)
+                    Please upload your payment receipt (₦1,000 registration fee)
                     <input
                       type="file"
                       name="paymentReceipt"
