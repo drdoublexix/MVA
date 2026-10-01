@@ -183,7 +183,7 @@ function App() {
             <p className="section-kicker">Featured programs</p>
             <h2 className="section-title">Skills, inclusion, and opportunity that move people forward.</h2>
             <p className="section-copy">
-              Explore the MVA initiatives developing talent and carrying recognition into meaningful next steps.
+              Explore the MVA initiatives developing creatives and carrying recognition into meaningful next steps.
             </p>
           </div>
           <div className="programs-grid">
