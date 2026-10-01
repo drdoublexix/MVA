@@ -4,6 +4,7 @@ import ig from "./assets/icons8-ig.svg";
 import x from "./assets/icons8-x-50.png";
 import youtube from "./assets/icons8-youtube.png";
 import tiktok from "./assets/icons8-tiktok-50.png";
+import { programs } from "./programs.js";
 import "./index.css";
 import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
@@ -56,7 +57,7 @@ const MvaRise = () => {
               <p>
                 <strong>
                   The gateway to the Merit and Value Awards. We don&apos;t just find
-                  talent—we build, professionalize, and connect it to real-world
+                  creatives—we build, professionalize, and connect it to real-world
                   economic opportunities.
                 </strong>
               </p>
@@ -110,45 +111,49 @@ const MvaRise = () => {
               </div>
             </section>
 
-            <section className="rise-training">
+            <section className="rise-programs">
               <div className="rise-section-heading">
-                <p className="rise-kicker">Core training areas &amp; cohorts</p>
-                <h2>Practical tracks for a changing economy.</h2>
+                <p className="rise-kicker">MVA Rise programs</p>
+                <h2>Different pathways. Room to find your own direction.</h2>
+                <p className="rise-programs-intro">
+                  Cohorts are shaped around people, practical skills, and the opportunities in reach. A program may focus on one discipline or bring complementary skills together.
+                </p>
               </div>
-              <div className="rise-training-grid">
-                {[
-                  ["01", "Digital & Emerging Tech", "Software engineering, web/mobile development, and core digital literacy."],
-                  ["02", "Creative Enterprise & Fashion", "Modern design, textile production, and scalable fashion branding."],
-                  ["03", "Beauty Enterprise & Lifestyle", "Professional aesthetics, product management, and beauty brand execution."],
-                  ["04", "Digital Media & Creator Economy", "Media production, digital storytelling, and monetization strategies."],
-                  ["05", "Venture Incubation & Leadership", "Business fundamentals, financial strategy, and enterprise scaling."],
-                  ["06", "Green Energy & CleanTech", "Sustainable infrastructure, renewable energy basics, and eco-mobility solutions."],
-                ].map(([number, title, body]) => (
-                  <article className="rise-pathway-step" key={number}>
-                    <span>{number}</span>
-                    <h3>{title}</h3>
-                    <p style={{ fontWeight: 'bold' }}>{body}</p>
+              <div className="rise-program-list">
+                {programs.map((program) => (
+                  <article className="rise-program-card" key={program.id}>
+                    <header className="rise-program-card-header">
+                      <div>
+                        <span className="rise-program-number">{program.number} / MVA RISE</span>
+                        <h3>{program.title}</h3>
+                        <p className="rise-program-audience">{program.audience}</p>
+                      </div>
+                      <p className="rise-program-summary">{program.summary}</p>
+                    </header>
+                    <div className="rise-program-details">
+                      {program.details.map((detail) => <p key={detail}>{detail}</p>)}
+                    </div>
+                    {program.sections.map((section) => (
+                      <div className="rise-program-section" key={section.title}>
+                        <h4>{section.title}</h4>
+                        <div className="rise-program-items">
+                          {section.items.map((item) => (
+                            <article key={item.title}>
+                              <h5>{item.title}</h5>
+                              <p>{item.body}</p>
+                            </article>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <div className="rise-program-outcomes">
+                      <h4>What participants can work toward</h4>
+                      <ul>
+                        {program.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}
+                      </ul>
+                    </div>
                   </article>
                 ))}
-              </div>
-            </section>
-
-            <section className="rise-initiative">
-              <div className="rise-initiative-inner">
-                <div>
-                  <p className="rise-kicker">Spotlight flagship initiative</p>
-                  <h2>MVA Rise Young Women Skills Initiative</h2>
-                  <p className="rise-initiative-audience">Target audience: Young women aged 15–24.</p>
-                </div>
-                <p>
-                  A focused youth development initiative designed to equip young
-                  women with practical, marketable skills, structured mentorship,
-                  and pathways for personal and professional growth. Through
-                  sponsored cohorts funded by corporate partners and specialized
-                  training tracks, the initiative ensures young women have equal
-                  access to the tools needed to build financial independence and
-                  leadership capacity.
-                </p>
               </div>
             </section>
 

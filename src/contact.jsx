@@ -90,7 +90,7 @@ const ContactUs = () => {
               <p>Explore training tracks, apply for current cohorts, and begin your development journey.</p>
               <strong>Apply now →</strong>
             </Link>
-            <Link to="/nominate" className="contact-path-card">
+            <Link to="/nominate/submit" className="contact-path-card">
               <span>02 / MVA Awards</span>
               <h3>Nominate a changemaker</h3>
               <p>Put a creator, entrepreneur, public figure, or community leader in the spotlight.</p>

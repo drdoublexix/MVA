@@ -10,6 +10,7 @@ import menu from "./assets/menu2.jpeg";
 import { Link } from "react-router";
 import { useState } from "react";
 import { list } from "./App.jsx";
+import { partners } from "./partners.js";
 
 const Sponsors = () => {
   const [slide, setSlide] = useState(false);
@@ -175,6 +176,24 @@ const Sponsors = () => {
           </div>
         </section>
       </main>
+
+      <section className="partner-showcase sponsor-partner-showcase">
+        <div className="partner-showcase-inner">
+          <header className="partner-showcase-heading">
+            <p className="sponsor-kicker">Our community</p>
+            <h2>Our Partners</h2>
+            <p>Meet the organizations helping us create meaningful recognition, skills, and opportunity.</p>
+          </header>
+          <div className="partner-logo-grid">
+            {partners.map((partner) => (
+              <article className="partner-logo-card" key={partner.name}>
+                <img src={partner.logo} alt={`${partner.name} logo`} loading="lazy" />
+                <span>{partner.name}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="bg-black text-white text-center p-5">

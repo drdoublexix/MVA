@@ -117,12 +117,41 @@ const Awards = () => {
             <h2>More than a trophy.</h2>
           </div>
           <p>
-            When you win or get nominated at the Merit and Value Awards, your
-            journey doesn&apos;t end on stage. MVA connects honorees with mentorship
-            networks, corporate sponsors, media visibility, and opportunities to
-            mentor the next wave of participants in our MVA Rise development
-            programs.
+            Recognition at the Merit and Value Awards can be a beginning, not an
+            ending. Through the MVA Awards Recognition-to-Opportunity Pathway,
+            promising individuals identified through awards and other MVA
+            activities may be considered for tailored mentorship, professional
+            development, stronger visibility, and introductions to relevant
+            networks and opportunities. Support is shaped around each person and
+            the opportunities available; it is a pathway for development, not a
+            guarantee of placement or funding.
           </p>
+        </div>
+      </section>
+
+      <section className="awards-pathway">
+        <div className="awards-pathway-inner">
+          <div>
+            <p className="awards-kicker">Beyond the year-end celebration</p>
+            <h2>MVA Awards Recognition-to-Opportunity Pathway</h2>
+          </div>
+          <div>
+            <p>
+              Each year, MVA celebrates people whose work is creating value in
+              their communities. The pathway builds on that recognition by
+              identifying selected individuals with promising talent, initiative,
+              or impact and helping them take a considered next step.
+            </p>
+            <p>
+              Depending on a participant&apos;s goals and available partner
+              opportunities, support may include one-to-one mentorship,
+              professionalization, portfolio and communication guidance,
+              introductions to relevant professionals, and referrals to
+              development or work opportunities. The aim is to turn visibility
+              into sustained growth and meaningful connections.
+            </p>
+            <Link to="/mva-rise" className="text-link">Explore MVA Rise programs <span aria-hidden="true">→</span></Link>
+          </div>
         </div>
       </section>
 

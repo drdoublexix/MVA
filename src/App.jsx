@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
 import logo from "./assets/logo.png";
@@ -8,8 +8,9 @@ import x from "./assets/icons8-x-50.png";
 import youtube from "./assets/icons8-youtube.png";
 import tiktok from "./assets/icons8-tiktok-50.png";
 import { Link } from "react-router";
-import mvs from "./assets/clearMVS.png";
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import { programs } from "./programs.js";
+import { partners } from "./partners.js";
 
 export const list = [
   { name: "Home", path: "/" },
@@ -24,6 +25,18 @@ export const list = [
 
 function App() {
   const [slide, setSlide] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState(null);
+
+  useEffect(() => {
+    if (!selectedProgram) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setSelectedProgram(null);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [selectedProgram]);
 
   const toggleSlide = () => {
     setSlide(!slide);
@@ -165,20 +178,81 @@ function App() {
           </div>
         </section>
 
-        <section className="program-feature mx-4 my-8 md:mx-8 lg:mx-12">
-          <div>
-            <p className="section-kicker">Featured program</p>
-            <h2>MVA Rise Young Women Skills Initiative</h2>
-            <p>
-              A focused youth development initiative equipping young women aged
-              15–24 with practical, marketable skills, mentorship, and
-              opportunities for personal and professional growth.
+        <section className="programs-section px-4 py-16 md:px-8 lg:px-12">
+          <div className="section-intro">
+            <p className="section-kicker">Featured programs</p>
+            <h2 className="section-title">Skills, inclusion, and opportunity that move people forward.</h2>
+            <p className="section-copy">
+              Explore the MVA initiatives developing talent and carrying recognition into meaningful next steps.
             </p>
-            <span className="program-tag">Sponsored Cohorts &amp; Open Applications Available</span>
           </div>
-          <Link to="/sponsors" className="button-theme bolder">Join / Sponsor a Cohort</Link>
+          <div className="programs-grid">
+            {programs.map((program) => (
+              <article className="program-card" key={program.id}>
+                <span className="program-card-number">{program.number} / MVA</span>
+                <h3>{program.title}</h3>
+                <p className="program-card-audience">{program.audience}</p>
+                <p>{program.summary}</p>
+                <button
+                  className="program-card-link"
+                  onClick={() => setSelectedProgram(program)}
+                  aria-haspopup="dialog"
+                >
+                  Explore program details <span aria-hidden="true">→</span>
+                </button>
+              </article>
+            ))}
+          </div>
+          <Link to="/sponsors" className="button-theme bolder programs-sponsor-link">Partner with a program</Link>
         </section>
       </main>
+
+      {selectedProgram && (
+        <div
+          className="program-modal-backdrop"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setSelectedProgram(null);
+          }}
+        >
+          <section
+            className="program-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="program-modal-title"
+          >
+            <button
+              className="program-modal-close"
+              onClick={() => setSelectedProgram(null)}
+              aria-label="Close program details"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+            <p className="section-kicker">{selectedProgram.audience}</p>
+            <h2 id="program-modal-title">{selectedProgram.title}</h2>
+            {selectedProgram.details.map((detail) => <p key={detail}>{detail}</p>)}
+            {selectedProgram.sections.map((section) => (
+              <div className="program-modal-section" key={section.title}>
+                <h3>{section.title}</h3>
+                <div className="program-modal-items">
+                  {section.items.map((item) => (
+                    <article key={item.title}>
+                      <h4>{item.title}</h4>
+                      <p>{item.body}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="program-modal-section">
+              <h3>What participants can work toward</h3>
+              <ul>
+                {selectedProgram.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}
+              </ul>
+            </div>
+            <Link to="/sponsors" className="button-theme bolder">Partner with MVA</Link>
+          </section>
+        </div>
+      )}
 
       {/* Testimonials */}
 
@@ -194,19 +268,25 @@ function App() {
         </p>
       </section> */}
 
-      {/* Sponsors */}
-      <section className="mx-4 my-6 flex flex-col justify-center rounded-[28px] border border-neutral-800 bg-neutral-900/90 p-8 text-white shadow-2xl shadow-black/30 md:mx-8 lg:mx-12">
-        <h1 className="bolder mt-2 text-center text-3xl">Our partners </h1>
-
-        <div className="mt-6 inline-flex justify-center rounded-[20px] border border-neutral-800 bg-neutral-950/70 p-4">
-          <img src={mvs} alt="MVS Logo" className="h-[150px] w-auto" />
+      <section className="partner-showcase partner-showcase-home">
+        <div className="partner-showcase-inner">
+          <header className="partner-showcase-heading">
+            <p className="section-kicker">The people beside us</p>
+            <h2>Our Partners</h2>
+            <p>We are grateful to the organizations supporting our work and the communities we serve.</p>
+          </header>
+          <div className="partner-logo-grid">
+            {partners.map((partner) => (
+              <article className="partner-logo-card" key={partner.name}>
+                <img src={partner.logo} alt={`${partner.name} logo`} loading="lazy" />
+                <span>{partner.name}</span>
+              </article>
+            ))}
+          </div>
+          <Link to="/sponsors" className="button-theme bolder partner-showcase-link">
+            Become a sponsor
+          </Link>
         </div>
-        <Link
-          to="/sponsors"
-          className="button-theme mx-auto mt-6 block text-center"
-        >
-          Become a sponsor
-        </Link>
       </section>
 
       {/* Newsletter/updates */}

@@ -152,6 +152,8 @@ body {
 
 .button-theme {
   @apply bg-[#FFD700] rounded-[20px] text-white p-3 text-sm hover:text-black hover:bg-white hover:transition-all duration-200;
+  background-color: #8a5a00;
+  color: #fff;
   box-shadow: 0 12px 30px rgba(245, 158, 11, 0.3);
 }
 
@@ -557,6 +559,200 @@ body {
   text-align: center;
 }
 
+.programs-section {
+  background: #111827;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.program-card {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: linear-gradient(150deg, rgba(14, 116, 144, 0.3), rgba(15, 23, 42, 0.94));
+}
+
+.program-card:nth-child(2) {
+  background: linear-gradient(150deg, rgba(22, 101, 52, 0.34), rgba(15, 23, 42, 0.94));
+}
+
+.program-card:nth-child(3) {
+  background: linear-gradient(150deg, rgba(180, 83, 9, 0.36), rgba(15, 23, 42, 0.94));
+}
+
+.program-card-number,
+.rise-program-number {
+  color: #fde68a;
+  font-family: Poppins-bold;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+}
+
+.program-card h3 {
+  margin: 16px 0 10px;
+  color: #fff;
+  font-family: Poppins-bold;
+  font-size: 1.4rem;
+  line-height: 1.25;
+}
+
+.program-card p {
+  margin: 0 0 14px;
+  color: #dbe4ef;
+  font-family: Josefin-sans;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.program-card p.program-card-audience {
+  margin-bottom: 10px;
+  color: #fde68a;
+  font-family: Poppins-bold;
+  font-size: 0.82rem;
+}
+
+.program-card-link {
+  margin-top: auto;
+  padding: 10px 0 0;
+  border: 0;
+  color: #fde68a;
+  background: transparent;
+  font-family: Poppins-bold;
+  cursor: pointer;
+}
+
+.program-card-link span {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 180ms ease;
+}
+
+.program-card-link:hover span {
+  transform: translateX(4px);
+}
+
+.programs-sponsor-link {
+  display: block;
+  width: fit-content;
+  margin: 32px auto 0;
+}
+
+.program-modal-backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.82);
+}
+
+.program-modal {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: min(90vh, 900px);
+  overflow-y: auto;
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 8px;
+  color: #e2e8f0;
+  background: #0f172a;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.program-modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: #fff;
+  background: #1e293b;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.program-modal h2 {
+  max-width: 720px;
+  margin: 0 0 18px;
+  color: #fff;
+  font-family: Poppins-bold;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.program-modal > p:not(.section-kicker),
+.program-modal-items p {
+  color: #cbd5e1;
+  font-family: Josefin-sans;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.program-modal-section {
+  margin-top: 28px;
+}
+
+.program-modal-section h3 {
+  margin: 0 0 14px;
+  color: #fde68a;
+  font-family: Poppins-bold;
+  font-size: 1.15rem;
+}
+
+.program-modal-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.program-modal-items article {
+  padding: 16px;
+  border-left: 2px solid #f59e0b;
+  background: #172033;
+}
+
+.program-modal-items h4 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-family: Poppins-bold;
+  font-size: 0.96rem;
+}
+
+.program-modal-items p {
+  margin: 0;
+  font-size: 0.94rem;
+}
+
+.program-modal-section ul,
+.rise-program-outcomes ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  color: #cbd5e1;
+  font-family: Josefin-sans;
+  line-height: 1.6;
+}
+
+.program-modal > .button-theme {
+  display: inline-block;
+  margin-top: 28px;
+}
+
 @media (max-width: 900px) {
   .pathway-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -584,6 +780,23 @@ body {
 
   .program-feature .button-theme {
     width: 100%;
+  }
+
+  .programs-grid,
+  .program-modal-items {
+    grid-template-columns: 1fr;
+  }
+
+  .program-card {
+    min-height: 0;
+  }
+
+  .program-modal-backdrop {
+    padding: 10px;
+  }
+
+  .program-modal {
+    max-height: 94vh;
   }
 }
 
@@ -1067,6 +1280,43 @@ body {
   line-height: 1.75;
 }
 
+.awards-pathway {
+  padding: clamp(48px, 7vw, 88px) 24px;
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.awards-pathway-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.awards-pathway-inner h2 {
+  margin: 0;
+  color: #0f172a;
+  font-family: Poppins-bold;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.awards-pathway-inner > div:last-child > p {
+  margin: 0 0 18px;
+  color: #475569;
+  font-family: Josefin-sans;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.awards-pathway-inner .text-link {
+  display: inline-block;
+  color: #9a3412;
+}
+
 .awards-cta {
   max-width: 1120px;
   margin: 0 auto;
@@ -1106,6 +1356,11 @@ body {
   }
 
   .awards-experience-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .awards-pathway-inner {
     grid-template-columns: 1fr;
     gap: 22px;
   }
@@ -1193,7 +1448,6 @@ body {
 .rise-hero-content h1,
 .rise-content-width h2,
 .rise-section-heading h2,
-.rise-initiative h2,
 .rise-partnership h2 {
   margin: 0;
   color: #fff;
@@ -1248,7 +1502,7 @@ body {
 
 .rise-overview,
 .rise-pathway,
-.rise-training,
+.rise-programs,
 .rise-partnership {
   padding: clamp(52px, 7vw, 90px) 24px;
 }
@@ -1260,7 +1514,7 @@ body {
 .rise-content-width,
 .rise-section-heading,
 .rise-pathway-grid,
-.rise-training-grid,
+.rise-program-list,
 .rise-initiative-inner,
 .rise-partnership-inner {
   max-width: 1120px;
@@ -1273,7 +1527,6 @@ body {
 
 .rise-content-width h2,
 .rise-section-heading h2,
-.rise-initiative h2,
 .rise-partnership h2 {
   font-size: clamp(2rem, 4vw, 3.25rem);
 }
@@ -1293,7 +1546,7 @@ body {
 }
 
 .rise-pathway .rise-section-heading h2,
-.rise-training .rise-section-heading h2 {
+.rise-programs .rise-section-heading h2 {
   color: #0f172a;
 }
 
@@ -1316,14 +1569,14 @@ body {
 }
 
 .rise-pathway-step > span,
-.rise-training-card > span {
+.rise-program-number {
   color: #b45309;
   font-family: Poppins-bold;
   font-size: 0.8rem;
 }
 
 .rise-pathway-step h3,
-.rise-training-card h3 {
+.rise-program-section h4 {
   margin: 16px 0 10px;
   color: #0f172a;
   font-family: Poppins-bold;
@@ -1332,12 +1585,149 @@ body {
 }
 
 .rise-pathway-step p,
-.rise-training-card p {
+.rise-program-items p {
   margin: 0;
   color: #475569;
   font-family: Josefin-sans;
   font-size: 0.98rem;
   line-height: 1.6;
+}
+
+.rise-programs {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.rise-programs-intro {
+  max-width: 820px;
+  margin: 16px 0 0;
+  color: #475569;
+  font-family: Josefin-sans;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.rise-program-list {
+  display: grid;
+  gap: 22px;
+}
+
+.rise-program-card {
+  padding: clamp(22px, 4vw, 38px);
+  border-top: 4px solid #0e7490;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.rise-program-card:nth-child(2) {
+  border-color: #15803d;
+}
+
+.rise-program-card:nth-child(3) {
+  border-color: #b45309;
+}
+
+.rise-program-card-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  gap: 32px;
+  align-items: end;
+}
+
+.rise-program-number {
+  color: #b45309;
+}
+
+.rise-program-card h3 {
+  margin: 10px 0;
+  color: #0f172a;
+  font-family: Poppins-bold;
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+  line-height: 1.2;
+}
+
+.rise-program-audience {
+  margin: 0;
+  color: #0e7490;
+  font-family: Poppins-bold;
+  font-size: 0.9rem;
+}
+
+.rise-program-summary {
+  margin: 0;
+  color: #334155;
+  font-family: Josefin-sans;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.rise-program-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.rise-program-details p {
+  margin: 0;
+  color: #475569;
+  font-family: Josefin-sans;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.rise-program-section,
+.rise-program-outcomes {
+  margin-top: 28px;
+}
+
+.rise-program-section h4,
+.rise-program-outcomes h4 {
+  margin: 0 0 14px;
+  color: #0f172a;
+  font-family: Poppins-bold;
+  font-size: 1.15rem;
+}
+
+.rise-program-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rise-program-items article {
+  padding: 16px;
+  border-left: 2px solid #f59e0b;
+  background: #f1f5f9;
+}
+
+.rise-program-items h5 {
+  margin: 0 0 7px;
+  color: #0f172a;
+  font-family: Poppins-bold;
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
+.rise-program-items p {
+  margin: 0;
+  color: #475569;
+  font-family: Josefin-sans;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.rise-program-outcomes {
+  padding-top: 20px;
+  border-top: 1px solid #cbd5e1;
+}
+
+.rise-program-outcomes ul {
+  color: #475569;
+}
+
+.rise-initiative {
+  display: none;
 }
 
 .rise-training {
@@ -1359,69 +1749,8 @@ body {
   grid-column: span 2;
 }
 
-.rise-training-card:nth-child(4),
-.rise-training-card:nth-child(5) {
-  grid-column: span 3;
-}
-
-.rise-initiative {
-  padding: clamp(50px, 7vw, 84px) 24px;
-  color: #e2e8f0;
-  background: linear-gradient(115deg, #164e63, #172554 70%, #713f12);
-}
-
-.rise-initiative-inner {
-  display: grid;
-  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
-  gap: 64px;
-  align-items: start;
-}
-
-.rise-initiative h2 {
-  max-width: 560px;
-}
-
-.rise-initiative .rise-kicker,
 .rise-partnership .rise-kicker {
   color: #fde68a;
-}
-
-.rise-initiative-audience {
-  margin: 20px 0 0;
-  color: #fef3c7;
-  font-family: Poppins-bold;
-  font-size: 0.95rem;
-}
-
-.rise-initiative-inner > p:not(.rise-initiative-audience) {
-  margin: 0;
-  color: #dbe4ef;
-  font-family: Josefin-sans;
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.75;
-}
-
-.rise-partnership {
-  background: #111827;
-}
-
-.rise-partnership-inner {
-  display: grid;
-  grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1fr) minmax(230px, 0.75fr);
-  gap: 40px;
-  align-items: center;
-}
-
-.rise-partnership-inner > p {
-  margin: 0;
-  color: #cbd5e1;
-  font-family: Josefin-sans;
-  font-size: 1.08rem;
-  line-height: 1.7;
-}
-
-.rise-cta-actions {
-  margin-top: 0;
 }
 
 @media (max-width: 1000px) {
@@ -1429,14 +1758,8 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .rise-training-grid {
+  .rise-program-items {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .rise-training-card,
-  .rise-training-card:nth-child(4),
-  .rise-training-card:nth-child(5) {
-    grid-column: span 1;
   }
 
   .rise-partnership-inner {
@@ -1466,14 +1789,14 @@ body {
   }
 
   .rise-pathway-grid,
-  .rise-training-grid,
-  .rise-initiative-inner,
+  .rise-program-card-header,
+  .rise-program-details,
+  .rise-program-items,
   .rise-partnership-inner {
     grid-template-columns: 1fr;
   }
 
-  .rise-pathway-step,
-  .rise-training-card {
+  .rise-pathway-step {
     min-height: 0;
   }
 
@@ -2301,6 +2624,89 @@ body {
   text-align: center;
 }
 
+.partner-showcase {
+  padding: clamp(48px, 7vw, 80px) 24px;
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.partner-showcase-home {
+  color: #e2e8f0;
+  background: #111827;
+}
+
+.partner-showcase-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.partner-showcase-heading {
+  max-width: 760px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.partner-showcase-heading h2 {
+  margin: 0;
+  color: inherit;
+  font-family: Poppins-bold;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.partner-showcase-heading > p:last-child {
+  margin: 14px 0 0;
+  color: #475569;
+  font-family: Josefin-sans;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.partner-showcase-home .partner-showcase-heading > p:last-child {
+  color: #cbd5e1;
+}
+
+.partner-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.partner-logo-card {
+  min-width: 0;
+  min-height: 235px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+}
+
+.partner-logo-card img {
+  display: block;
+  width: 100%;
+  height: 155px;
+  object-fit: contain;
+}
+
+.partner-logo-card span {
+  color: #0f172a;
+  font-family: Poppins-bold;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.partner-showcase-link {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+}
+
 @media (max-width: 850px) {
   .sponsor-intro-inner,
   .sponsor-engine-grid,
@@ -2315,6 +2721,16 @@ body {
 
   .sponsor-model-grid article:last-child {
     grid-column: 1 / -1;
+  }
+
+  .partner-logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .partner-logo-card:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(100%, 330px);
   }
 
   .sponsor-cta-inner {
@@ -2347,6 +2763,15 @@ body {
 
   .sponsor-model-grid article:last-child {
     grid-column: auto;
+  }
+
+  .partner-logo-card {
+    min-height: 190px;
+    padding: 14px;
+  }
+
+  .partner-logo-card img {
+    height: 125px;
   }
 }
 
@@ -2779,6 +3204,11 @@ body {
 
 .general-card2 {
   @apply p-[20px] rounded-[15px] h-[200px] w-[200px] shadow-lg shadow-black/20;
+}
+
+body p:not([class*="kicker"]),
+body li:not(.list li) {
+  zoom: 1.09;
 }
 
 /* For the MVA Rise page alone */
