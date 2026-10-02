@@ -27,9 +27,9 @@ const PrivacyPolicy = () => {
                 <aside className={`heading fixed ${slide ? "slide-in" : "slide-out"}`}>
                     <ul className="list">
                         <button className="menu" onClick={toggleSlide} aria-label="Close navigation">
-                            <img src={back} alt="" />
+                            <img src={back} alt="Back" />
                         </button>
-                        {list.map((item) => (
+                        {list.map((item,) => (
                             <li key={item.path}>
                                 <Link to={item.path} className="header-button">{item.name}</Link>
                             </li>
@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
 
                 <header className="relative overflow-hidden border-b border-amber-400/20 bg-[radial-gradient(ellipse_at_50%_100%,rgba(180,130,35,0.2),transparent_55%),linear-gradient(135deg,#07090d,#15130d_55%,#090a0c)] px-5 pb-12 pt-24 text-center sm:pb-16">
                     <button
-                        className="fixed left-2 top-2 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-neutral-900"
+                        className="menu-toggle-button"
                         onClick={toggleSlide}
                         aria-label="Open navigation"
                         aria-expanded={slide}

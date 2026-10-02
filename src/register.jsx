@@ -112,7 +112,7 @@ const Register = () => {
       <div className="nominee-register-shell">
         <header className="nominee-register-header">
           <button
-            className="nominee-menu-button"
+            className="menu-toggle-button"
             onClick={toggleSlide}
             aria-label="Open navigation"
             aria-expanded={slide}

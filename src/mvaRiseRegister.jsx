@@ -72,7 +72,7 @@ const MvaRiseRegister = () => {
 
         <div className="rise-register-shell">
           <header className="rise-register-header">
-            <button className="fixed top-0 left-0 z-[20] h-[45px] w-[50px] rounded-[50%] bg-[#999999]" onClick={toggleSlide}>
+            <button className="menu-toggle-button" onClick={toggleSlide}>
               <img src={menu} alt="Menu" className="ml-3" />
             </button>
             <img src={logo} alt="Logo" className="absolute right-3 top-3 z-30 h-[35px] md:h-[55px]" />

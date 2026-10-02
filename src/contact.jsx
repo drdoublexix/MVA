@@ -45,7 +45,7 @@ const ContactUs = () => {
 
         <section className="contact-hero w-full overflow-hidden">
           <button
-            className="fixed top-0 left-0 bg-[#999999] rounded-[50%] z-[20] md:cursor-pointer fixed h-[45px] w-[50px] "
+            className="menu-toggle-button"
             onClick={toggleSlide}
           >
             <img src={menu} alt="Menu" className="ml-3" />

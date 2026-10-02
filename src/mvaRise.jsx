@@ -39,7 +39,7 @@ const MvaRise = () => {
         <div className="w-full">
           <section className="rise-hero px-4 py-4 text-white md:px-6">
             <button
-              className="fixed top-0 left-0 z-[20] h-[45px] w-[50px] rounded-[50%] bg-[#999999] md:cursor-pointer"
+              className="menu-toggle-button"
               onClick={toggleSlide}
             >
               <img src={menu} alt="Menu" className="ml-3" />

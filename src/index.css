@@ -2034,24 +2034,25 @@ body {
   object-fit: contain;
 }
 
-.nominee-menu-button {
+.menu-toggle-button {
   position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 31;
+  top: 8px;
+  left: 8px;
+  z-index: 20;
   display: grid;
   width: 44px;
   height: 44px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   background: #171717;
   cursor: pointer;
 }
 
-.nominee-menu-button img {
+.menu-toggle-button img {
   width: 24px;
   height: 24px;
+  margin: 0;
   object-fit: contain;
 }
 
