@@ -37,20 +37,20 @@ const Gallery = () => {
   };
 
   const galleryImages = [
-    [img1, "MVA Awards ceremony", "Awards & Events"],
+    [img1, "Community and culture", "Awards & Events"],
     [img2, "Community recognition", "Awards & Events"],
-    [img3, "Creative talent spotlight", "MVA Rise"],
+    [img3, "MVA Awards preview", "Awards & Events"],
     [img4, "MVA event experience", "Awards & Events"],
-    [img5, "Emerging creator", "MVA Rise"],
+    [img5, "Emerging creator", "Awards & Events"],
     [img6, "Recognition in action", "Awards & Events"],
-    [img7, "Community and culture", "Impact"],
-    [img8, "Creative showcase", "MVA Rise"],
-    [img9, "Behind the scenes", "Awards & Events"],
-    [img10, "MVA audience", "Impact"],
+    [img7, "Creative excellence", "Impact"],
+    [img8, "Creative showcase", "Awards & Events"],
+    [img9, "Vote of thanks", "Awards & Events"],
+    [img10, "MVA red carpet", "Awards & Events"],
     [img11, "Talent on stage", "Awards & Events"],
     [img12, "Celebrating progress", "Impact"],
-    [img13, "MVA community", "Impact"],
-    [img14, "Creative excellence", "MVA Rise"],
+    [img13, "MVA community impact recognition", "Impact"],
+    [img14, "MVA audience", "Awards & Events"],
     [award1, "Past award recipient", "Recognition"],
   ];
 

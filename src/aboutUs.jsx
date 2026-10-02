@@ -322,7 +322,7 @@ const AboutUs = () => {
                 University of Maiduguri. With his 13 years of extensive experience in IT,
                 Francis oversees the digital infrastructure, data integrity,
                 and cybersecurity operations of Merit and Value Awards, ensuring the
-                platform operatessecurely, transparently, and with the highest
+                platform operates securely, transparently, and with the highest
                 standards of digital trust.
               </p>
             </div>

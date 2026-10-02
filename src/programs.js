@@ -1,3 +1,13 @@
+const flexibleCohortFocusAreas = [
+  { title: "Makeup & Beauty Business", body: "Build practical beauty-service skills alongside client care, pricing, product knowledge, and the foundations of running a trusted beauty business." },
+  { title: "Fashion & Tailoring", body: "Develop garment construction, sewing, finishing, and design skills, with an introduction to costing, customer orders, and presenting finished work." },
+  { title: "Digital Literacy", body: "Strengthen everyday digital confidence, including productive use of devices, online tools, digital communication, and safer participation in the online world." },
+  { title: "Content Creation & Social Media Management", body: "Learn to plan, produce, and publish purposeful content, manage social channels, understand audiences, and support brands or enterprises online." },
+  { title: "Event Management", body: "Practice the planning and coordination behind successful events, from timelines and vendors to guest experience, promotion, and on-the-day delivery." },
+  { title: "Entrepreneurship", body: "Explore how to shape an idea into a viable offer through customer discovery, simple business planning, pricing, basic financial habits, and sales." },
+  { title: "Photography & Cinematography", body: "Develop visual storytelling skills through photography and video production, including composition, lighting, camera techniques, editing, and presenting finished work." },
+];
+
 export const programs = [
   {
     id: "young-women-skills",
@@ -13,14 +23,7 @@ export const programs = [
     sections: [
       {
         title: "Flexible cohort focus areas",
-        items: [
-          { title: "Makeup & Beauty Business", body: "Build practical beauty-service skills alongside client care, pricing, product knowledge, and the foundations of running a trusted beauty business." },
-          { title: "Fashion & Tailoring", body: "Develop garment construction, sewing, finishing, and design skills, with an introduction to costing, customer orders, and presenting finished work." },
-          { title: "Digital Literacy", body: "Strengthen everyday digital confidence, including productive use of devices, online tools, digital communication, and safer participation in the online world." },
-          { title: "Content Creation & Social Media Management", body: "Learn to plan, produce, and publish purposeful content, manage social channels, understand audiences, and support brands or enterprises online." },
-          { title: "Event Management", body: "Practice the planning and coordination behind successful events, from timelines and vendors to guest experience, promotion, and on-the-day delivery." },
-          { title: "Entrepreneurship", body: "Explore how to shape an idea into a viable offer through customer discovery, simple business planning, pricing, basic financial habits, and sales." },
-        ],
+        items: flexibleCohortFocusAreas,
       },
       {
         title: "A cohort shaped around learners",
@@ -57,6 +60,10 @@ export const programs = [
           { title: "Build relevant skills", body: "Connect practical training and talent development to real-world projects, professional readiness, enterprise, and community participation." },
           { title: "Connect people to opportunity", body: "Create routes to mentors, showcases, networks, and appropriate opportunities, while recognizing that each participant's next step will be different." },
         ],
+      },
+      {
+        title: "Flexible cohort focus areas",
+        items: flexibleCohortFocusAreas,
       },
     ],
     outcomes: [
