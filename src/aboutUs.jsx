@@ -16,6 +16,7 @@ import contentCreator from "./assets/contentCreator.jpeg";
 import Adanna from "./assets/Adanna.jpeg";
 import Emmanuel from "./assets/Emmanuel.jpeg";
 import Alimani from "./assets/Alimani.jpeg";
+import CCOMVA from "./assets/CCOMVA.jpeg";
 
 const AboutUs = () => {
   const [slide, setSlide] = useState(false);
@@ -274,6 +275,30 @@ const AboutUs = () => {
                 complete data ecosystem of the platform — including the
                 records, profiles, and information of all artists, nominees,
                 partners, and participants.
+              </p>
+            </div>
+          </article>
+
+          <article className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <img
+              src={CCOMVA}
+              alt="Bushrah Bisola Abdulraheem"
+              className="w-full h-[260px] object-cover object-[center_25%]"
+            />
+            <div className="p-5">
+              <h2 className="bolder2 text-xl text-gray-900">
+                Bushrah Bisola Abdulraheem
+              </h2>
+              <p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-[#0284C7]">
+                Chief Creative Officer
+              </p>
+              <p className="mt-3 text-sm leading-7 text-gray-700">
+                Bachelor of Pharmacy (B.Pharm), University of Maiduguri. Seasoned health and leadership 
+                professional with over five years of active experience in the Pharmaceutical Association of 
+                Nigerian Students (PANS), serving as Social Director and pioneering the PANS Fiesta. Bushrah 
+                brings dynamic expertise in social and logistics direction, event coordination, public health 
+                advocacy, and youth leadership, shaping community engagement and purposeful service for 
+                Merit and Value Awards across all platforms.
               </p>
             </div>
           </article>

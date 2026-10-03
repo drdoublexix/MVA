@@ -12,6 +12,7 @@ import youtube from "./assets/icons8-youtube.png";
 import tiktok from "./assets/icons8-tiktok-50.png";
 import { officialAwardCategories } from "./officialAwardCategories.js";
 import { supabase } from "./supabaseClient.js";
+import { nomineeRegistrationSchema } from "./submissionValidation.js";
 
 const MAX_RECEIPT_SIZE = 10 * 1024 * 1024;
 const ALLOWED_RECEIPT_TYPES = ["application/pdf", "image/jpeg", "image/png", "image/webp"];
@@ -41,6 +42,12 @@ const Register = () => {
     event.preventDefault();
     setErrorMessage("");
 
+    const validation = nomineeRegistrationSchema.safeParse(formData);
+    if (!validation.success) {
+      setErrorMessage(validation.error.issues[0]?.message || "Please check your details and try again.");
+      return;
+    }
+
     if (!paymentReceipt) {
       setErrorMessage("Please choose your ₦1,000 payment receipt to continue.");
       return;
@@ -57,7 +64,7 @@ const Register = () => {
     }
 
     setSubmitting(true);
-    const receiptPath = `${crypto.randomUUID()}-${paymentReceipt.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+    const receiptPath = crypto.randomUUID();
 
     try {
       const { error: uploadError } = await supabase.storage
@@ -71,12 +78,12 @@ const Register = () => {
       if (uploadError) throw uploadError;
 
       const { error: insertError } = await supabase.from("nominee_registrations").insert({
-        nominee_name: formData.nomineeName.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        category: formData.category,
-        location: formData.location.trim(),
-        achievements_summary: formData.achievements.trim(),
+        nominee_name: validation.data.nomineeName,
+        email: validation.data.email,
+        phone: validation.data.phone,
+        category: validation.data.category,
+        location: validation.data.location,
+        achievements_summary: validation.data.achievements,
         payment_receipt_path: receiptPath,
         payment_confirmed: formData.paymentConfirmed,
         registration_fee_ngn: 1000,
@@ -135,10 +142,10 @@ const Register = () => {
                 <h2>Thank you for registering.</h2>
                 <p>Your details and payment receipt have been securely submitted to the MVA team for review.</p>
                 <p>
-                  Now create your nominee campaign flyer. Add your photo, name, award category, and any other details to your design, then share it on your status and social media to invite friends and supporters to nominate you.
+                  Now create your nominee campaign flyer. Add your photo, name, and award category to your design, then share it on your status and social media to invite friends and supporters to nominate you.
                 </p>
                 <a
-                  href="https://www.canva.com/"
+                  href="https://canva.link/aybe8wgkkfhhryi/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="nomination-canva-link"
@@ -159,21 +166,25 @@ const Register = () => {
 
                 <div className="nomination-payment-notice">
                   <strong>Registration fee: ₦1,000</strong>
+                  <span>Pay the registration fee to this account before uploading your receipt:</span>
+                  <span><strong>Bank:</strong> Moniepoint</span>
+                  <span><strong>Account name:</strong> Merit and Value Awards limited</span>
+                  <span><strong>Account number:</strong> <bdi>6639769520</bdi></span>
                   <span>Upload your payment receipt as a PDF or image. Your receipt is stored privately for the MVA team.</span>
                 </div>
 
                 <form onSubmit={handleSubmit} className="nomination-form">
                   <label>
                     Full name
-                    <input name="nomineeName" autoComplete="name" value={formData.nomineeName} onChange={handleChange} required />
+                    <input name="nomineeName" autoComplete="name" value={formData.nomineeName} onChange={handleChange} minLength={2} maxLength={120} required />
                   </label>
                   <label>
                     Email address
-                    <input type="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} required />
+                    <input type="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} maxLength={254} required />
                   </label>
                   <label>
                     Phone number
-                    <input type="tel" name="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} required />
+                    <input type="tel" name="phone" autoComplete="tel" value={formData.phone} onChange={handleChange} minLength={7} maxLength={30} required />
                   </label>
                   <label>
                     Award category
@@ -184,11 +195,11 @@ const Register = () => {
                   </label>
                   <label>
                     City / state
-                    <input name="location" autoComplete="address-level2" value={formData.location} onChange={handleChange} required />
+                    <input name="location" autoComplete="address-level2" value={formData.location} onChange={handleChange} minLength={2} maxLength={120} required />
                   </label>
                   <label className="nomination-form-full">
                     Why do you think you deserve this recognition? Share a summary of your achievements.
-                    <textarea name="achievements" rows="5" value={formData.achievements} onChange={handleChange} required />
+                    <textarea name="achievements" rows="5" value={formData.achievements} onChange={handleChange} minLength={20} maxLength={3000} required />
                   </label>
                   <label className="nomination-form-full">
                     Please upload your payment receipt (₦1,000 registration fee)

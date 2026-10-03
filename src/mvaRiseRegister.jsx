@@ -7,6 +7,7 @@ import back from "./assets/back.png";
 import menu from "./assets/menu2.jpeg";
 import logo from "./assets/logo.png";
 import { supabase } from "./supabaseClient.js";
+import { mvaRiseApplicationSchema, mvaRiseTracks } from "./submissionValidation.js";
 
 const MvaRiseRegister = () => {
   const [slide, setSlide] = useState(false);
@@ -29,24 +30,30 @@ const MvaRiseRegister = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmissionStatus("Submitting your application...");
-
-    const { error } = await supabase.from("mva_rise_applications").insert({
-      full_name: formData.fullName.trim(),
-      email: formData.email.trim(),
-      phone: formData.phone.trim(),
-      age: Number(formData.age),
-      preferred_track: formData.track,
-      motivation: formData.motivation.trim(),
-    });
-
-    if (error) {
-      console.error("MVA Rise application failed:", error);
-      setSubmissionStatus("We could not submit your application. Please try again later.");
+    const validation = mvaRiseApplicationSchema.safeParse(formData);
+    if (!validation.success) {
+      setSubmissionStatus(validation.error.issues[0]?.message || "Please check your details and try again.");
       return;
     }
 
-    setSubmissionStatus("Your application has been received. Thank you for your interest in MVA Rise.");
+    setSubmissionStatus("Submitting your application...");
+
+    try {
+      const { error } = await supabase.from("mva_rise_applications").insert({
+        full_name: validation.data.fullName,
+        email: validation.data.email,
+        phone: validation.data.phone,
+        age: validation.data.age,
+        preferred_track: validation.data.track,
+        motivation: validation.data.motivation,
+      });
+
+      if (error) throw error;
+      setSubmissionStatus("Your application has been received. Thank you for your interest in MVA Rise.");
+    } catch (error) {
+      console.error("MVA Rise application failed:", error);
+      setSubmissionStatus("We could not submit your application. Please try again later.");
+    }
   };
 
   return (
@@ -95,15 +102,15 @@ const MvaRiseRegister = () => {
             <form className="rise-register-form" onSubmit={handleSubmit}>
               <label>
                 Full name
-                <input name="fullName" value={formData.fullName} onChange={handleChange} required />
+                <input name="fullName" value={formData.fullName} onChange={handleChange} minLength={2} maxLength={120} required />
               </label>
               <label>
                 Email address
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} maxLength={254} required />
               </label>
               <label>
                 Phone number
-                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} minLength={7} maxLength={30} required />
               </label>
               <label>
                 Age
@@ -113,17 +120,12 @@ const MvaRiseRegister = () => {
                 Preferred training track
                 <select name="track" value={formData.track} onChange={handleChange} required>
                   <option value="">Select a track</option>
-                  <option>Digital & Emerging Tech</option>
-                  <option>Creative Enterprise & Fashion</option>
-                  <option>Beauty Enterprise & Lifestyle</option>
-                  <option>Digital Media & Creator Economy</option>
-                  <option>Venture Incubation & Leadership</option>
-                  <option>Green Energy & CleanTech</option>
+                  {mvaRiseTracks.map((track) => <option key={track}>{track}</option>)}
                 </select>
               </label>
               <label className="rise-register-full-field">
                 Why do you want to join MVA Rise?
-                <textarea name="motivation" rows="5" value={formData.motivation} onChange={handleChange} required />
+                <textarea name="motivation" rows="5" value={formData.motivation} onChange={handleChange} minLength={20} maxLength={3000} required />
               </label>
               {submissionStatus && <p className="rise-register-full-field" role="status">{submissionStatus}</p>}
               {/* <button type="submit" className="button-theme bolder rise-register-submit">Submit cohort application</button> */}

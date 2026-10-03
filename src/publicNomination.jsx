@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { list } from "./App.jsx";
+import "./index.css";
+import back from "./assets/back.png";
+import menu from "./assets/menu2.jpeg";
 import { officialAwardCategories } from "./officialAwardCategories.js";
 
 const PublicNomination = () => {
+  const [slide, setSlide] = useState(false);
   const [formData, setFormData] = useState({
     nomineeName: "",
     category: "",
@@ -11,6 +16,10 @@ const PublicNomination = () => {
     nominatorName: "",
     nomineeRegistered: false,
   });
+
+  const toggleSlide = () => {
+    setSlide((previous) => !previous);
+  };
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -39,7 +48,34 @@ const PublicNomination = () => {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <header className="border-b border-amber-500/20 bg-black px-5 py-10 text-center sm:py-14">
+      <div className="flex">
+        <aside
+          className={`heading fixed md:static ${slide ? "slide-in" : "slide-out"}`}
+        >
+          <ul className="list">
+            <button className="menu" onClick={toggleSlide} aria-label="Close navigation">
+              <img src={back} alt="" />
+            </button>
+            {list.map((item) => (
+              <li key={item.path}>
+                <Link to={item.path} className="header-button">
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
+
+        <div className="w-full">
+      <header className="relative border-b border-amber-500/20 bg-black px-5 py-10 text-center sm:py-14">
+        <button
+          className="menu-toggle-button"
+          onClick={toggleSlide}
+          aria-label="Open navigation"
+          aria-expanded={slide}
+        >
+          <img src={menu} alt="" className="ml-3" />
+        </button>
         <Link to="/nominate" className="text-sm text-amber-400 hover:text-amber-300">
           Back to nominations
         </Link>
@@ -150,6 +186,8 @@ const PublicNomination = () => {
           </button>
         </form>
       </main>
+        </div>
+      </div>
     </div>
   );
 };
